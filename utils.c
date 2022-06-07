@@ -1,4 +1,4 @@
-#include "pushswap.h"
+#include "push_swap.h"
 
 int str_len(char  *s)
 {

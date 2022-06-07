@@ -1,26 +1,29 @@
-#include"pushswap.h"
+#include "push_swap.h"
 
 int main(int ac, char **av)
 {
-    // t_stack  *s;
-    // t_stack  **last;
-    char     **tmp;
-    int      *i = NULL;
-    int      j;
-    int      value;
+    t_stack         *head;
+    t_stack         *s;
+    char            **tmp;
+    int             *i = NULL;
+    int             j;
 
-
-    // *i = NULL;
+    head = NULL;
     if (ac == 2)
     {
         tmp = ft_split(av[1], ' ', i);
-        j = 0;
-        value = 0;
-        while(tmp[j])
-        {
-            value = ft_atoi(tmp[j]);
-           printf("########### :%d\n", value);
-           
+        j = -1;
+        while(tmp[++j])
+           append(&head, ft_atoi(tmp[j]), j);
+
+        swap_a(&head);
+        // s = head;
+        // while(s)
+        // {
+        //     printf("################ :%d\n", s->num);
+        //     printf("################ :%d\n", s->position);
+        //     printf("################ \n");
+        //     s =  s->next;
         }
     }
 }

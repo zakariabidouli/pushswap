@@ -58,8 +58,6 @@ int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_itoa(int n);
-t_list		*ft_lstnew(void *content);
-void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 t_list		*ft_lstlast(t_list *lst);
