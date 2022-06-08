@@ -7,10 +7,12 @@ void    p_a(t_stack **head_ref_a,t_stack **head_ref_b)
     int     temp;
 
     temp_b = *head_ref_b;
-    if(temp_b && *head_ref_a)
+    temp_a = *head_ref_a;
+    if(temp_b)
     {
         temp = temp_b->num;
-        push_front(head_ref_a, temp, -1);
+        push_front(head_ref_a, temp, 0);
+        deleteNode(head_ref_b, temp_b);
         while(temp_a)
         {   
             temp_a->position += 1;
@@ -26,10 +28,12 @@ void p_b(t_stack **head_ref_a, t_stack  **head_ref_b)
     int     temp;
 
     temp_a = *head_ref_a;
-    if(temp_b && *head_ref_a)
+    temp_b = *head_ref_b;
+    if(temp_a)
     {
         temp = temp_a->num;
-        push_front(head_ref_b, temp, -1);
+        push_front(head_ref_b, temp, 0);
+        deleteNode(head_ref_a, temp_a);
         while(temp_b)
         {   
             temp_b->position += 1;
