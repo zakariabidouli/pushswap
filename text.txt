@@ -1,0 +1,19 @@
+
+        // s_a(&head_a);
+        // s_b(&head_b);
+        // p_a(&head_a, &head_b);
+        p_b(&head_b, &head_a);
+        // rr_r(&head_a, &head_b);
+        s = head_a;
+        // f = head_b;
+        while(s) 
+        {
+            printf("################ :%d", s->num);
+            // printf("################ :%d\n", f->num);
+            // printf("################ \n");
+            // printf("################ :%d", s->position);
+            // printf("################ :%d\n", f->position);
+            printf("################ \n");
+
+            s =  s->next;
+            // f =  f->next;

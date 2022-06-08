@@ -7,6 +7,12 @@
 #include<unistd.h>
 #include<stdlib.h>
 
+typedef enum
+{
+	false,
+	true
+}	t_bool;
+
 typedef struct s_stack{
     int                num;
     int                position;
@@ -14,18 +20,27 @@ typedef struct s_stack{
     struct s_stack     *prev;
 }t_stack;
 
-char	    **ft_split(char const *s, char c, int *items_count);
-void        append(t_stack **head_ref, int num, int position);
-void         push_front(t_stack ** head_ref, int num, int position);
-void        deleteNode(t_stack ** head_ref, t_stack* del);
+typedef struct s_stk_inf{
+    t_stack *head;
+    int     size;
+}t_stk_inf;
+
+char	     **ft_split(char const *s, char c, int *items_count);
+void         append(t_stack **head_ref, int num);
+void         push_front(t_stack ** head_ref, int num);
+void         deleteNode(t_stack ** head_ref, t_stack* del);
+void         new_positions(t_stack  **head_ref);
 void         s_a(t_stack  **head_ref);
 void         s_b(t_stack  **head_ref);
 void         s_s(t_stack  **head_ref_a, t_stack  **head_ref_b);
+void         p_a(t_stack **head_ref_a,t_stack **head_ref_b);
+void         p_b(t_stack **head_ref_a, t_stack  **head_ref_b);
 void         r_a(t_stack  **head_ref);
 void         r_b(t_stack  **head_ref);
 void         r_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
-void         p_a(t_stack **head_ref_a,t_stack **head_ref_b);
-void         p_b(t_stack **head_ref_a, t_stack  **head_ref_b);
+void         rr_a(t_stack  **head_ref);
+void         rr_b(t_stack  **head_ref);
+void         rr_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
 
 
 

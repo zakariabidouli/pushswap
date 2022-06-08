@@ -4,17 +4,19 @@ void swap_first(t_stack **head_ref)
 {
     t_stack *temp;
     int     num_temp;
+    int     i;
 
     temp = *head_ref;
-    while(temp && temp->position < 2)
+    i = 0;
+    while(temp && i < 2)
     {
-        if(temp->position == 0)
+        if(i == 0)
         {
             // printf("#################### :%d\n", temp->next->num);
             num_temp = temp->num;
             temp->num = temp->next->num;
         }
-        else if(temp->position == 1)
+        else if(i == 1)
             temp->num = num_temp;
         temp = temp->next;
     }

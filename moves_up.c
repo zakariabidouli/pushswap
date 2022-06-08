@@ -52,5 +52,5 @@ void r_r(t_stack  **head_ref_a, t_stack  **head_ref_b)
 {
     up_shift_one(head_ref_a);
     up_shift_one(head_ref_b);
-    printf("r_b\n");
+    printf("r_r\n");
 }
