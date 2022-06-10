@@ -13,7 +13,7 @@ t_stack	*get_min(t_stack *s, t_stk_inf *inf)
 		i = 0;
 		has_min = false;
 		curr = inf->head;
-        printf("################ :%d\n", inf->size);
+        // printf("################ :%d\n", inf->size);
 		while (i < inf->size)
 		{
 			if ((curr->position == -1)
@@ -34,10 +34,16 @@ void		sort_position(t_stack *stack, t_stk_inf *inf)
 	size_t		index;
 	t_stack	    *current;
 
+    current = inf->head;
 	index = 0;
 	while ((current = get_min(stack, inf)))
-		current->position = index++;
-    // exit(0);
+	{
+        // printf("################%d\n", get_min(stack, inf));
+
+    	current->position = index++;
+        printf("################%zu\n", index);
+        printf("################%d\n", current->position);
+    }
 }
 
 int main(int ac, char **av)
@@ -45,13 +51,14 @@ int main(int ac, char **av)
     t_stack         *head_a;
     t_stack         *head_b;
     t_stack         *s;
-    t_stack         *f;
+    // t_stack         *f;
     t_stk_inf       info_a;
     char            **tmp;
     int             *i = NULL;
     int             j;
 
     head_a = NULL;
+    head_b = NULL;
     if (ac == 2)
     {
         tmp = ft_split(av[1], ' ', i);
@@ -64,19 +71,19 @@ int main(int ac, char **av)
         info_a.head = head_a;
         info_a.size = j;
         sort_position(head_a, &info_a);
-        s = head_a;
+        // s = head_a;
         // f = head_b;
-        while(s) 
-        {
-            printf("################ :%d\n", s->num);
-            // printf("################ :%d\n", f->num);
-            // printf("################ \n");
-            printf("################ :%d\n", s->position);
-            // printf("################ :%d\n", f->position);
-            printf("################ \n");
+        // while(s) 
+        // {
+        //     printf("################ :%d\n", s->num);
+        //     // printf("################ :%d\n", f->num);
+        //     // printf("################ \n");
+        //     printf("################ :%d\n", s->position);
+        //     // printf("################ :%d\n", f->position);
+        //     printf("################ \n");
 
-            s =  s->next;
-            // f =  f->next;
-        }
+        //     s =  s->next;
+        //     // f =  f->next;
+        // }
     }
 }
