@@ -16,17 +16,17 @@ typedef enum
 typedef struct s_stack{
     int                num;
     int                position;
+    // t_bool             has_min;
     struct s_stack     *next;
     struct s_stack     *prev;
 }t_stack;
 
 typedef struct s_stk_inf{
-    t_stack *head;
     int     size;
 }t_stk_inf;
 
 char	     **ft_split(char const *s, char c, int *items_count);
-void         append(t_stack **head_ref, int num);
+void         append(t_stack **head_ref, int num, int position);
 void         push_front(t_stack ** head_ref, int num);
 void         deleteNode(t_stack ** head_ref, t_stack* del);
 void         new_positions(t_stack  **head_ref);

@@ -32,7 +32,7 @@ void insertAfter(t_stack *prev_node, int num)
         new_node->next->prev = new_node;
 }
 
-void append(t_stack **head_ref, int num)
+void append(t_stack **head_ref, int num, int position)
 {
     t_stack *new_node;
     t_stack *last;
@@ -40,6 +40,7 @@ void append(t_stack **head_ref, int num)
     new_node = (t_stack *)malloc(sizeof(t_stack));
     last = *head_ref;
     new_node->num = num;
+    new_node->position = position;
     new_node->next = NULL;
     if (*head_ref == NULL)
     {

@@ -1,19 +1,27 @@
 #include "push_swap.h"
 
-t_stack	*get_min(t_stack *s, t_stk_inf *inf)
+// t_stack	*get_min(t_stack *s, t_stk_inf *inf)
+// {
+// 	return (min);
+// }
+
+t_stack     *get_min(t_stack  *s, t_stk_inf *inf)
 {
 	size_t	i;
 	t_bool	has_min;
 	t_stack	*min;
 	t_stack	*curr;
-
-	min = NULL;
-	if (s)
+    
+	// if(!(min = (t_stack *)malloc(sizeof(t_stack))))
+    //     return (NULL);
+    min = NULL;
+    // printf("################ :%d\n", inf->head->num);
+	if (s) 
 	{
 		i = 0;
 		has_min = false;
-		curr = inf->head;
-        // printf("################ :%d\n", inf->size);
+		curr = s;
+        // printf("################ :%d\n", inf->head->num);
 		while (i < inf->size)
 		{
 			if ((curr->position == -1)
@@ -21,28 +29,30 @@ t_stack	*get_min(t_stack *s, t_stk_inf *inf)
 			{
 				has_min = true;
 				min = curr;
+                // printf("###############: %d", min->num);
 			}
 			i++;
 			curr = curr->next;
 		}
 	}
-	return (min);
+    // printf("###############: %d\n", min->num);
+    return (min);
 }
 
-void		sort_position(t_stack *stack, t_stk_inf *inf)
-{
+void		sort_position(t_stack *h, t_stk_inf *inf)
+{ 
 	size_t		index;
 	t_stack	    *current;
 
-    current = inf->head;
+    current = h;
 	index = 0;
-	while ((current = get_min(stack, inf)))
+    // get_min(inf->head, inf);
+	while ((current = get_min(h, inf)))
 	{
-        // printf("################%d\n", get_min(stack, inf));
-
+        // printf("################%d\n", current->num);
     	current->position = index++;
-        printf("################%zu\n", index);
-        printf("################%d\n", current->position);
+        // printf("################%zu\n", index);
+        // printf("################%d\n", current->position);
     }
 }
 
@@ -65,25 +75,24 @@ int main(int ac, char **av)
         j = -1;
         while(tmp[++j])
         {
-           append(&head_a, ft_atoi(tmp[j]));
+           append(&head_a, ft_atoi(tmp[j]), -1);
         //    append(&head_b, 0, 0);
         }
-        info_a.head = head_a;
         info_a.size = j;
         sort_position(head_a, &info_a);
-        // s = head_a;
-        // f = head_b;
-        // while(s) 
-        // {
-        //     printf("################ :%d\n", s->num);
-        //     // printf("################ :%d\n", f->num);
-        //     // printf("################ \n");
-        //     printf("################ :%d\n", s->position);
-        //     // printf("################ :%d\n", f->position);
-        //     printf("################ \n");
+        s = head_a;
+        // // f = head_b;
+        while(s) 
+        {
+            printf("################ :%d\n", s->num);
+            // printf("################ :%d\n", f->num);
+            // printf("################ \n");
+            printf("################ :%d\n", s->position);
+            // printf("################ :%d\n", f->position);
+            printf("################ \n");
 
-        //     s =  s->next;
-        //     // f =  f->next;
-        // }
+            s =  s->next;
+        // //     // f =  f->next;
+        }
     }
 }
