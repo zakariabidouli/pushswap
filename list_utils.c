@@ -1,13 +1,14 @@
 #include "push_swap.h"
 
-void push_front(t_stack ** head_ref, int num)
+void push_front(t_stack ** head_ref, int num, int index)
 {
     t_stack *new_node;
 
     new_node = (t_stack *)malloc(sizeof(t_stack));
  
     new_node->num = num;
- 
+    new_node->index = index;
+
     new_node->next = (*head_ref);
     new_node->prev = NULL;
  
@@ -17,7 +18,7 @@ void push_front(t_stack ** head_ref, int num)
     (*head_ref) = new_node;
 }
 
-void insertAfter(t_stack *prev_node, int num)
+void insertAfter(t_stack *prev_node, int num, int index)
 {
     t_stack *new_node;
     if (prev_node == NULL)
@@ -25,6 +26,7 @@ void insertAfter(t_stack *prev_node, int num)
  
     new_node = (t_stack *)malloc(sizeof(t_stack));
     new_node->num = num;
+    new_node->index = index;
     new_node->next = prev_node->next;
     prev_node->next = new_node;
     new_node->prev = prev_node;
@@ -32,7 +34,7 @@ void insertAfter(t_stack *prev_node, int num)
         new_node->next->prev = new_node;
 }
 
-void append(t_stack **head_ref, int num, int position)
+void append(t_stack **head_ref, int num, int index)
 {
     t_stack *new_node;
     t_stack *last;
@@ -40,7 +42,7 @@ void append(t_stack **head_ref, int num, int position)
     new_node = (t_stack *)malloc(sizeof(t_stack));
     last = *head_ref;
     new_node->num = num;
-    new_node->position = position;
+    new_node->index = index;
     new_node->next = NULL;
     if (*head_ref == NULL)
     {

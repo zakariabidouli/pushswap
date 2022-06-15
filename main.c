@@ -66,21 +66,22 @@ int main(int ac, char **av)
         sort_position(head_a, &info_a);
         to_keep(head_a, &info_a);
 
-        sort(head_a, head_b, &info_a);
+        // sort(head_a, head_b, &info_a);
+        // r_a(&head_a);
+        s = head_a;
+        // f = head_b;
+        while(s) 
+        {
+            printf("################ :%d\n", s->num);
+            // printf("################ :%d\n", f->num);
+            // printf("################ \n");
+            printf("################ :%d\n", s->index);
+            printf("################ :%d\n", s->keep);
+            // printf("################ :%d\n", f->position);
+            printf("################ \n");
 
-        // s = head_a;
-        // // f = head_b;
-        // while(s) 
-        // {
-        //     printf("################ :%d\n", s->num);
-        //     // printf("################ :%d\n", f->num);
-        //     // printf("################ \n");
-        //     printf("################ :%d\n", s->position);
-        //     // printf("################ :%d\n", f->position);
-        //     printf("################ \n");
-
-        //     s =  s->next;
-        // // //     // f =  f->next;
-        // }
+            s =  s->next;
+            // f =  f->next;
+        }
     }
 }

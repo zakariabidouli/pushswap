@@ -10,7 +10,7 @@
 typedef enum
 {
 	false,
-	true
+	true,
 }	t_bool;
 
 typedef struct s_stack{
@@ -28,8 +28,8 @@ typedef struct s_stk_inf{
 }t_stk_inf;
 
 char	     **ft_split(char const *s, char c, int *items_count);
-void         append(t_stack **head_ref, int num, int position);
-void         push_front(t_stack ** head_ref, int num);
+void         append(t_stack **head_ref, int num, int index);
+void         push_front(t_stack ** head_ref, int num, int index);
 void         deleteNode(t_stack ** head_ref, t_stack* del);
 void         new_positions(t_stack  **head_ref);
 void         s_a(t_stack  **head_ref);
@@ -44,9 +44,5 @@ void         rr_a(t_stack  **head_ref);
 void         rr_b(t_stack  **head_ref);
 void         rr_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
 void         to_keep(t_stack *head_a, t_stk_inf *inf);
-
-
-
-
 
 #endif

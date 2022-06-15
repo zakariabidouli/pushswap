@@ -18,8 +18,6 @@ void down_shift_one(t_stack **head_ref)
     temp= temp->prev;
     temp->next = NULL;
     (*head_ref)->prev = NULL;
-
-    new_positions(head_ref);
 }
 
 void rr_a(t_stack  **head_ref)

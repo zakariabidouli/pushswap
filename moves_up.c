@@ -1,19 +1,5 @@
 #include "push_swap.h"
 
-void    new_positions(t_stack  **head_ref)
-{
-    t_stack *it;
-    int       i;
-
-    it = *head_ref;
-    i = 0;
-    while (it)
-    {
-        it->position = i++;
-        it = it->next;
-    }
-}
-
 void up_shift_one(t_stack **head_ref)
 {
     t_stack *temp;
@@ -32,8 +18,6 @@ void up_shift_one(t_stack **head_ref)
     temp= temp->next;
     temp->next = NULL;
     (*head_ref)->prev = NULL;
-
-    new_positions(head_ref);
 }
 
 void r_a(t_stack  **head_ref)
