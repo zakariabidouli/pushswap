@@ -22,8 +22,8 @@ typedef struct s_stack{
 }t_stack;
 
 typedef struct s_stk_inf{
-	t_stack head_a;
-	t_stack head_b;
+	t_stack **head_a;
+	t_stack **head_b;
 	int     size;
 }t_stk_inf;
 
@@ -44,5 +44,7 @@ void         rr_a(t_stack  **head_ref);
 void         rr_b(t_stack  **head_ref);
 void         rr_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
 void         to_keep(t_stack *head_a, t_stk_inf *inf);
+int          stacksize(t_stack *head_a);
+
 
 #endif

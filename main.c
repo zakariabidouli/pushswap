@@ -41,6 +41,12 @@ void		sort_position(t_stack *h, t_stk_inf *inf)
     }
 }
 
+// void init_inf(t_stack *head_a, t_stack *head_b)
+// {
+//     t_stk_inf info;
+
+// }
+
 int main(int ac, char **av)
 {
     t_stack         *head_a;
@@ -62,7 +68,10 @@ int main(int ac, char **av)
         {
            append(&head_a, ft_atoi(tmp[j]), -1);
         }
+        
         info_a.size = j;
+        info_a.head_a = &head_a;
+        info_a.head_b = &head_b;
         sort_position(head_a, &info_a);
         to_keep(head_a, &info_a);
 
