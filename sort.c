@@ -16,31 +16,42 @@
 void    in_top(int shift, t_stack *head_a)
 {
     t_stack *it;
+    int     i;
 
     it = head_a;
-    while (it && )
+    while (it && --shift >= 0)
+        r_a(&it);
+}
+
+void    in_flop(int shift, t_stack *head_a)
+{
+    t_stack *it;
+    int     i;
+
+    it = head_a;
+    while (it && --shift >= 0)
+        rr_a(&it);
 }
 
 void    to_top(t_stack *head_a, t_stk_inf *inf)
 {
+    t_stack  *it;
     int      median;
-    t_stack *it;
     int      i;
 
     median = inf->size / 2;
-    it = head_a;
     i = -1;
-    while(it && ++i)
+    it = head_a;
+    while(it && ++i < inf->size)
     {
-        if (it->index == 0 && i <= median)
+        if (it->index == 0)
         {
-            in_top((i+1), head_a);
-            break;
-        }
-        else if (it->index == 0 && i > median)
-        {
-           in_flop((inf->size - i) , head_a);
-            break;  
+            // printf("################ wsl : %d\n", i);
+            if (i + 1 <= median)
+                in_top((i), head_a);
+            else if (i + 1 > median)
+                in_flop((inf->size - i) , head_a);
+            // break;
         }
         it = it->next;
     }
@@ -50,16 +61,17 @@ void    to_keep(t_stack *head_a, t_stk_inf *inf)
 {
     t_stack *it;
 
+    to_top(head_a, inf);
     it = head_a;
-    while(it)
-    {
-        // if ( it->index == 0)
-        //     it->keep = true;
-        if (it->index >= it->prev->index)
-            it->keep = true;
-        else
-            it->keep = false;    
-        it = it->next;
-    }
+    // while(it)
+    // {
+    //     if (it->index == 0)
+    //         it->keep = true;
+    //     else if (it->index >= it->prev->index)
+    //         it->keep = true;
+    //     else
+    //         it->keep = false;
+    //     it = it->next;
+    // }
 }
 

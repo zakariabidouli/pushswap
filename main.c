@@ -74,8 +74,11 @@ int main(int ac, char **av)
         info_a.head_b = &head_b;
         sort_position(head_a, &info_a);
         to_keep(head_a, &info_a);
-
         // sort(head_a, head_b, &info_a);
+        // rr_a(&head_a);
+        // rr_a(&head_a);
+        // r_a(&head_a);
+        // r_a(&head_a);
         // r_a(&head_a);
         s = head_a;
         // f = head_b;
@@ -86,7 +89,7 @@ int main(int ac, char **av)
             // printf("################ \n");
             printf("################ :%d\n", s->index);
             printf("################ :%d\n", s->keep);
-            // printf("################ :%d\n", f->position);
+             // printf("################ :%d\n", f->position);
             printf("################ \n");
 
             s =  s->next;
