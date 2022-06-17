@@ -13,6 +13,13 @@
 //         it = it->next;
 //     return (i);
 // }
+void    in_top(int shift, t_stack *head_a)
+{
+    t_stack *it;
+
+    it = head_a;
+    while (it && )
+}
 
 void    to_top(t_stack *head_a, t_stk_inf *inf)
 {
@@ -22,9 +29,21 @@ void    to_top(t_stack *head_a, t_stk_inf *inf)
 
     median = inf->size / 2;
     it = head_a;
-    i = 0;
-    while(it && i++ < median)
+    i = -1;
+    while(it && ++i)
+    {
+        if (it->index == 0 && i <= median)
+        {
+            in_top((i+1), head_a);
+            break;
+        }
+        else if (it->index == 0 && i > median)
+        {
+           in_flop((inf->size - i) , head_a);
+            break;  
+        }
         it = it->next;
+    }
     
 }
 void    to_keep(t_stack *head_a, t_stk_inf *inf)
