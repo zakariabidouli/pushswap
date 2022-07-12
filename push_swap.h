@@ -43,8 +43,8 @@ void         r_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
 void         rr_a(t_stack  **head_ref);
 void         rr_b(t_stack  **head_ref);
 void         rr_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
-void         to_keep(t_stack *head_a, t_stk_inf *inf);
-int          stacksize(t_stack *head_a);
+void         to_keep(t_stack **head_a, t_stk_inf *inf);
+int          stacksize(t_stack **head_a);
 
 
 #endif
