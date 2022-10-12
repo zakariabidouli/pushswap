@@ -13,29 +13,29 @@
 //         it = it->next;
 //     return (i);
 // }
-void    in_top(int shift, t_stack **head_a)
+void    in_top(int shift, t_stack *head_a)
 {
     t_stack *it;
     int     i;
 
-    it = *head_a;
+    it = head_a;
     // printf("################# in top\n");
     while (it && --shift >= 0)
-        r_a(head_a);
+        r_a(&head_a);
 }
 
-void    in_flop(int shift, t_stack **head_a)
+void    in_flop(int shift, t_stack *head_a)
 {
     t_stack *it;
     int     i;
 
-    it = *head_a;
+    it = head_a;
     // printf("################# in flop\n");
     while (it && --shift >= 0)
-        rr_a(head_a);
+        rr_a(&head_a);
 }
 
-void    to_top(t_stack **head_a, t_stk_inf *inf)
+void    to_top(t_stack *head_a, t_stk *inf)
 {
     t_stack  *it;
     int      median;
@@ -43,7 +43,7 @@ void    to_top(t_stack **head_a, t_stk_inf *inf)
 
     median = inf->size / 2;
     i = -1;
-    it = *head_a;
+    it = head_a;
     while(it && ++i < inf->size)
     {
         if (it->index == 0)
@@ -61,12 +61,12 @@ void    to_top(t_stack **head_a, t_stk_inf *inf)
     }
     
 }
-void    great_than(t_stack **head_a)
+void    great_than(t_stack *head_a)
 {
     t_stack *it;
     int     new_num;
 
-    it = *head_a;
+    it = head_a;
     new_num = 0;
     while(it)
     {
@@ -86,12 +86,12 @@ void    great_than(t_stack **head_a)
     }
 }
 
-void    mark_index(t_stack **head_a)
+void    mark_index(t_stack *head_a)
 {
     t_stack *it;
     int new_index;
 
-    it = *head_a;
+    it = head_a;
     new_index = 0;
     while(it)
     {
@@ -109,15 +109,15 @@ void    mark_index(t_stack **head_a)
 
 }
 
-void    to_keep(t_stack **head_a, t_stk_inf *inf)
+void    to_keep(t_stack *head, t_stk *inf)
 {
     t_stack *it;
     int i;
 
     i = -1;
-    it = *head_a;
-    to_top(head_a, inf);
-    great_than(head_a);
+    it = head;
+    to_top(head, inf);
+    great_than(head);
     // mark_index(head_a);
 }
 
@@ -146,7 +146,7 @@ void count(t_stack **head, t_stk_inf *inf)
         if(it->keep == true)
         {
            s_a(&it);
-           great_than(&it); 
+           great_than(it); 
         }
         else if (it->keep == false)
         {

@@ -1,6 +1,30 @@
 #include "push_swap.h"
 
-t_stack     *get_min(t_stack  **s, t_stk_inf *inf)
+void    duplicated(t_stk *stack)
+{
+    t_stack *tmp;
+    t_stack *tmp2;
+    int     i;
+
+    tmp = stack->head;
+    i = 0;
+    while (tmp)
+    {
+        tmp2 = tmp->next;
+        while (tmp2)
+        {
+            if (tmp->num == tmp2->num)
+            {
+                printf("duplicated value : %d\n", tmp->num);
+                exit(0);
+            }
+            tmp2 = tmp2->next;
+        }
+        tmp = tmp->next;
+    }
+}
+
+t_stack     *get_min(t_stack  *s, t_stk *inf)
 {
 	size_t	i;
 	t_bool	has_min;
@@ -12,7 +36,7 @@ t_stack     *get_min(t_stack  **s, t_stk_inf *inf)
 	{
 		i = 0;
 		has_min = false;
-		curr = *s;
+		curr = s;
 		while (i < inf->size)
 		{
 			if ((curr->index == -1)
@@ -25,15 +49,15 @@ t_stack     *get_min(t_stack  **s, t_stk_inf *inf)
 			curr = curr->next;
 		}
 	}
+    // printf("%d is min\n", min->num);
     return (min);
 }
 
-void		sort_position(t_stack **h, t_stk_inf *inf)
+void		sort_position(t_stack *h, t_stk *inf)
 { 
 	size_t		index;
 	t_stack	    *current;
 
-    current = *h;
 	index = 0;
 	while ((current = get_min(h, inf)))
 	{
@@ -47,67 +71,38 @@ void		sort_position(t_stack **h, t_stk_inf *inf)
 
 // }
 
+
 int main(int ac, char **av)
 {
-    t_stack         *head_a;
-    t_stack         *head_b;
+    t_stk         *stack_idx;
     t_stack         *s;
     // t_stack         *f;
-    t_stk_inf       info;
-    char            *tmp;
-    int             *i = NULL;
-    int             j;
-    int             z;
-
-    head_a = NULL;
-    head_b = NULL;
-    if (ac >= 1)
+    // t_stk_inf       *info;
+    
+    if(ac >= 2)
     {
-        tmp = malloc(sizeof(char) * (ac - 1));
-        if(*tmp)
-            return 0;
-        z = 1;
-        while(av[z])
-        {
-            tmp[z - 1] = *av[z];
-            // while (*tmp)
-            // {
-            //     if (*tmp == ' ')
-            //         *tmp = '\0';
-            //     tmp++;
-            // }
-            if (av[z][0] != '\0')
-                append(&head_a, ft_atoi(&tmp[z -1]), -1);
-            z++;
-        }
-        // j = -1;
-        // while(tmp[++j])
-        // {
-        //    append(&head_a, ft_atoi(&tmp[j]), -1);
-        // }
-        s = head_a;
-        
+        stack_idx = parse(ac, av);
+        duplicated(stack_idx);
+        sort_position(stack_idx->head, stack_idx);
+        // to_keep(stack_idx->head, stack_idx);
+        // sort(head_a, head_b, &info_a);
+        s = stack_idx->head;
+        // printf("\nzaaaab\n");
         while(s) 
         {
-            printf("################ :%d\n", s->num);
+            printf("\nzaaaab\n");
+
+            printf("################ zaab:%d\n", s->num);
             // printf("################ :%d\n", f->num);
             // printf("################ \n");
-            printf("################ :%d\n", s->index);
+            printf("################ zaab-index:%d\n", s->index);
             printf("################ :%u\n", s->keep);
-             // printf("################ :%d\n", f->position);
+                // printf("################ :%d\n", f->position);
             printf("################ \n");
 
             s =  s->next;
             // f =  f->next;
         }
-        info.size = j;
-        info.head_a = &head_a;
-        info.head_b = &head_b;
-        s = head_a;
-        // f = head_b;
-        sort_position(&head_a, &info);
-        to_keep(&head_a, &info);
-        // sort(head_a, head_b, &info_a);
         // rr_a(&head_a);
         // rr_a(&head_a);
         // r_a(&head_a);
@@ -115,18 +110,22 @@ int main(int ac, char **av)
         // r_a(&head_a);
         // s = head_a;
         // f = head_b;
+        // s = stack_idx->head_a;
         // while(s) 
         // {
         //     printf("################ :%d\n", s->num);
         //     printf("################ :%d\n", f->num);
         //     printf("################ \n");
-        //     printf("################ :%d\n", s->index);
-        //     printf("################ :%u\n", s->keep);
-        //      printf("################ :%d\n", f->position);
+        //     // printf("################ :%d\n", s->index);
+        //     // printf("################ :%u\n", s->keep);
+        //     //  printf("################ :%d\n", f->position);
         //     printf("################ \n");
 
         //     s =  s->next;
-        //     f =  f->next;
+        //     // f =  f->next;
         // }
     }
+    else
+        printf("Error_info\n");
+    return (0);
 }

@@ -9,9 +9,9 @@ FLAGS	=
 
 SRC 	 =  main.c utils.c list_utils.c moves_swap.c \
 			moves_push.c moves_up.c moves_down.c 	\
-			sort.c
+			sort.c parse.c
 
-OBJS 		= $(SRC:%.c=%.o)
+OBJS 		= $(SRC:%.c=%.o) 
 	 
 all: $(NAME)
 
