@@ -70,54 +70,90 @@ void		sort_position(t_stack *h, t_stk *inf)
 //     t_stk_inf info;
 
 // }
+static void ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
 
+void	ft_putnbr_fd(int nb, int fd)
+{
+	unsigned int	nbr;
+
+	if (nb == 0)
+	{
+		ft_putchar_fd ('0', fd);
+		return ;
+	}
+	if (nb < 0)
+	{
+		ft_putchar_fd ('-', fd);
+		nbr = nb * -1;
+	}
+	else
+		nbr = nb;
+	if (nbr > 9)
+	{
+		ft_putnbr_fd (nbr / 10, fd);
+		ft_putnbr_fd (nbr % 10, fd);
+	}
+	else
+		ft_putchar_fd (nbr + '0', fd);
+}
+
+static  void ft_putstr(char *s)
+{
+    while (*s)
+        write(1, s++, 1);
+}
+
+
+
+static void	print_stack(t_stk *stack,
+				t_stack **current,
+				size_t i)
+{
+	if (i < stack->size)
+	{
+		ft_putchar(' ');
+		printf("%d", (*current)->num);
+		ft_putchar(' ');
+		(*current) = (*current)->next;
+	}
+	else
+		ft_putstr("             ");
+}
 
 int main(int ac, char **av)
 {
-    t_stk         *stack_idx;
+    t_stk           *stack_idx;
     t_stack         *s;
     // t_stack         *f;
     // t_stk_inf       *info;
     
     if(ac >= 2)
     {
-        stack_idx = parse(ac, av);
-        duplicated(stack_idx);
+        // stack_idx = parse(ac, av);
+        duplicated(stack_idx = parse(ac, av));
         sort_position(stack_idx->head, stack_idx);
-        // to_keep(stack_idx->head, stack_idx);
+        to_keep(stack_idx, markup_index);
+        // to_keep(stack_idx, markup_greater);
+        stack_idx = solve(stack_idx, markup(stack_idx, markup_index));
+        // free_stack(stack_idx);
+        // mark_index(&stack_idx->head, stack_idx->markup_head);
         // sort(head_a, head_b, &info_a);
-        s = stack_idx->head;
         // printf("\nzaaaab\n");
-        while(s) 
-        {
-            printf("\nzaaaab\n");
-
-            printf("################ zaab:%d\n", s->num);
-            // printf("################ :%d\n", f->num);
-            // printf("################ \n");
-            printf("################ zaab-index:%d\n", s->index);
-            printf("################ :%u\n", s->keep);
-                // printf("################ :%d\n", f->position);
-            printf("################ \n");
-
-            s =  s->next;
-            // f =  f->next;
-        }
-        // rr_a(&head_a);
-        // rr_a(&head_a);
-        // r_a(&head_a);
-        // r_a(&head_a);
-        // r_a(&head_a);
-        // s = head_a;
-        // f = head_b;
+        // rr_a(&stack_idx->head);
+        // r_a(&stack_idx->head);
+        // print_stack(stack_idx, &stack_idx->markup_head, stack_idx->size);
         // s = stack_idx->head_a;
+        // s = stack_idx->head;
         // while(s) 
         // {
         //     printf("################ :%d\n", s->num);
-        //     printf("################ :%d\n", f->num);
+        //     // printf("################ :%d\n", f->num);
         //     printf("################ \n");
-        //     // printf("################ :%d\n", s->index);
-        //     // printf("################ :%u\n", s->keep);
+        //     printf("################ :%zd\n", s->index);
+        //     printf("################ :%u\n", s->keep);
         //     //  printf("################ :%d\n", f->position);
         //     printf("################ \n");
 
@@ -126,6 +162,6 @@ int main(int ac, char **av)
         // }
     }
     else
-        printf("Error_info\n");
+        printf("Error_args\n");
     return (0);
 }

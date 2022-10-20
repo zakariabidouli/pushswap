@@ -53,8 +53,7 @@ t_stk   *parse(int   ac, char    **av)
         string(stack, av[1]);
     else
         array(stack, ac, av); 
-    printf("size:  %zu\n", stack->size);
-      
+    // printf("size:  %zu\n", stack->size);
     if (!stack->size)
         printf("Error_!stack\n");
     return(stack);

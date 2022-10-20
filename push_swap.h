@@ -8,6 +8,7 @@
 #include<stdlib.h>
 
 #define FT_INT_MAX 2147483647
+#define FT_INT_MIN -2147483648
 typedef enum
 {
 	false,
@@ -16,7 +17,7 @@ typedef enum
 
 typedef struct s_stack{
 	int                num;
-	int                index;
+	ssize_t             index;
 	t_bool             keep;
 	struct s_stack     *next;
 	struct s_stack     *prev;
@@ -36,6 +37,13 @@ typedef struct s_stk_inf{
 	int     size;
 }t_stk_inf;
 
+typedef struct s_moves{
+	t_moves		*head;
+	char 		*name;
+	size_t 		size;
+	t_moves 	*next;
+}t_moves;
+
 char	     **ft_split(char const *s, char c, int *items_count);
 void         append(t_stk	*stack, int num);
 void         push_front(t_stack ** head_ref, int num, int index);
@@ -52,12 +60,20 @@ void         r_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
 void         rr_a(t_stack  **head_ref);
 void         rr_b(t_stack  **head_ref);
 void         rr_r(t_stack  **head_ref_a, t_stack  **head_ref_b);
-void         to_keep(t_stack *head, t_stk *inf);
+// void         to_keep(t_stack **head, t_stk *inf);
+// void	to_keep(t_stk *stack,
+// 			size_t (*markup_stack)(t_stk *, t_stack *));
+size_t	markup_greater(t_stk *stack, t_stack *markup_head);
+size_t	markup_index(t_stk *stack, t_stack *markup_head);
+void	to_keep(t_stk *stack,
+							size_t (*markup)(t_stk *, t_stack *));
 int          stacksize(t_stack **head_a);
 t_bool 		isNumber(const char *number,  t_bool strict);
 
 t_stk		*parse(int ac, char **av);
 void    	duplicated(t_stk *stack);
+void		solve(t_stk	*stack, size_t(markup)(t_stk *stack, t_stack *markup_head));
+void		free_stack(t_stk *stack);
 
 
 #endif

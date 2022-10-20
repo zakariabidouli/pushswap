@@ -87,3 +87,21 @@ void deleteNode(t_stack ** head_ref, t_stack* del)
     free(del);
     return;
 }
+
+void	free_stack(t_stk *stack)
+{
+	size_t			i;
+	t_stack	        *current;
+	t_stack	        *delete;
+
+	i = 0;
+	current = stack->head;
+	while (i < stack->size)
+	{
+		delete = current;
+		current = current->next;
+		free(delete);
+		i++;
+	}
+	free(stack);
+}
