@@ -1,42 +1,45 @@
 #include "push_swap.h"
 
-void swap_first(t_stack **head_ref)
+static void swap_first(t_stk   *stack, t_stack *first, t_stack *second)
 {
-    t_stack *temp;
-    int     num_temp;
-    int     i;
+    t_stack	*previous;
+	t_stack	*next;
 
-    temp = *head_ref;
-    i = 0;
-    while(temp && i < 2)
-    {
-        if(i == 0)
-        {
-            // printf("#################### :%d\n", temp->next->num);
-            num_temp = temp->num;
-            temp->num = temp->next->num;
-        }
-        else if(i == 1)
-            temp->num = num_temp;
-        temp = temp->next;
-    }
+	previous = first->prev;
+	next = second->next;
+
+	previous->next = second;
+	second->prev = previous;
+	first->next = next;
+	next->prev = first;
+	second->next = first;
+	first->prev = second;
+	stack->head = second;
 }
 
-void    s_a(t_stack  **head_ref)
+void    s_a(t_stk *stack)
 {
-    swap_first(head_ref);
-    printf("s_a\n");
+    swap_first(stack, stack->head, stack->head->next);
+    // printf("wasssla9ahba\n");
+    printf("sa\n");
 }
 
-void    s_b(t_stack  **head_ref)
+void    s_b(t_stk  *stack)
 {
-    swap_first(head_ref);
-    printf("s_b\n");
+    swap_first(stack, stack->head, stack->head->next);
+    printf("sb\n");
 }
 
-void    s_s(t_stack  **head_ref_a, t_stack  **head_ref_b)
+void    s_s(t_stk  *stack_a, t_stk  *stack_b)
 {
-    swap_first(head_ref_a);
-    swap_first(head_ref_b);
-    printf("s_s\n");
+    swap_first(stack_b, stack_b->head, stack_b->head->next);
+    swap_first(stack_a, stack_a->head, stack_a->head->next);
+    printf("ss\n");
+}
+
+void    s_x_l(t_stk  *stack, t_moves_list *list)
+{
+    swap_first(stack, stack->head, stack->head->next);
+    add_command(list, create_command("sa"));
+    printf("sa\n");
 }

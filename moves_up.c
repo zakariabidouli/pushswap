@@ -1,40 +1,50 @@
 #include "push_swap.h"
 
-void up_shift_one(t_stack **head_ref)
+void up_shift_one(t_stk *stack)
 {
-    t_stack *temp;
-    int     i;
+    // t_stack *temp;
+    // int     i;
 
-    temp = *head_ref;
-    while(temp->next!=NULL)
-    {
-        temp=temp->next;
-    }
+    if (stack && stack->head)
+		stack->head = stack->head->next;
 
-    temp->next = *head_ref;
-    (*head_ref)->prev = temp;
+    // temp = stack->head;
+    // while(temp->next!=NULL)
+    // {
+    //     temp=temp->next;
+    // }
+    // temp->next = stack->head;
+    // stack->head->prev = temp;
 
-    *head_ref = (*head_ref)->next;
-    temp= temp->next;
-    temp->next = NULL;
-    (*head_ref)->prev = NULL;
+    // stack->head = stack->head->next;
+    // temp= temp->next;
+    // temp->next = NULL;
+    // stack->head->prev = NULL;
 }
 
-void r_a(t_stack  **head_ref)
+void r_a(t_stk  *stack)
 {
-    up_shift_one(head_ref);
+    up_shift_one(stack);
     printf("r_a\n");
 }
 
-void r_b(t_stack  **head_ref)
+void r_b(t_stk  *stack)
 {
-    up_shift_one(head_ref);
+    up_shift_one(stack);
     printf("r_b\n");
 }
 
-void r_r(t_stack  **head_ref_a, t_stack  **head_ref_b)
+void r_r(t_stk  *stack_a, t_stk  *stack_b)
 {
-    up_shift_one(head_ref_a);
-    up_shift_one(head_ref_b);
+    up_shift_one(stack_a);
+    up_shift_one(stack_b);
     printf("r_r\n");
+}
+
+void    r_x_l(t_stk *stack, t_moves_list *list)
+{
+    up_shift_one(stack);
+    add_command(list, create_command("ra"));
+    printf("ra\n");
+    // printf("heeere\n");
 }

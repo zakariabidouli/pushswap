@@ -1,34 +1,101 @@
 #include "push_swap.h"
 
-void    p_b(t_stack **head_ref_a,t_stack **head_ref_b)
-{
-    t_stack *temp_b;
-    t_stack *temp_a;
-    int     temp;
 
-    temp_b = *head_ref_b;
-    temp_a = *head_ref_a;
-    if(temp_b)
-    {
-        temp = temp_a->num;
-        push_front(head_ref_b, temp_a->num, temp_a->index);
-        deleteNode(head_ref_a, temp_a);
-    }
+void			push(t_stk *stack,
+					t_stack *elem)
+{
+	t_stack	*tail;
+
+	if (stack && elem)
+	{
+		if (!stack->head)
+		{
+			stack->head = elem;
+			stack->head->prev = stack->head;
+			stack->head->next = stack->head;
+		}
+		else
+		{
+			tail = stack->head->prev;
+			elem->prev = tail;
+			tail->next = elem;
+			elem->next = stack->head;
+			stack->head->prev = elem;
+			stack->head = elem;
+		}
+		stack->size++;
+		// printf("add %zu\n", stack->size);
+	}
 }
 
-void p_a(t_stack **head_ref_a, t_stack  **head_ref_b)
+t_stack	*pop(t_stk *stack)
 {
-    t_stack *temp_b;
-    t_stack *temp_a;
-    int     temp;
+	t_stack	*elem;
 
-    temp_a = *head_ref_a;
-    temp_b = *head_ref_b;
-    if(temp_a)
-    {
-        temp = temp_b->num;
-        push_front(head_ref_a, temp, temp_a->index);
-        deleteNode(head_ref_b, temp_b);
-    }
+	elem = NULL;
+	if (stack && stack->size)
+	{
+		if (stack->size == 1)
+		{
+			elem = stack->head;
+			stack->head = NULL;
+			elem->prev = NULL;
+			elem->next = NULL;
+		}
+		else
+		{
+			elem = stack->head;
+			stack->head = stack->head->next;
+			elem->prev->next = elem->next;
+			elem->next->prev = elem->prev;
+			elem->prev = NULL;
+			elem->next = NULL;
+		}
+		stack->size--;
+	}
+	return (elem);
 }
 
+
+void    p_b_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list)
+{
+    t_stack   *to_pop;
+
+    to_pop = pop(stack_a);
+    push(stack_b, (to_pop));
+    add_command(list, create_command("pb"));
+    printf("p_b\n");
+    // printf("\n9ahhhhhba\n");
+}
+
+// void    p_b(t_stk *stack_a,t_stk *stack_b)
+// {
+//     // t_stack *temp_b;
+//     // t_stack *temp_a;
+//     // int     temp;
+
+//     // temp_b = stack_b->head;
+//     // temp_a = stack_a->head;
+//     // if(temp_b)
+//     // {
+//     //     temp = temp_a->num;
+//     //     push_front(stack_b->head, temp_a->num, temp_a->index);
+//     //     deleteNode(stack_a->head, temp_a);
+//     // }
+// }
+
+// void p_a(t_stk *stack_a,t_stk *stack_b)
+// {
+//     // t_stack *temp_b;
+//     // t_stack *temp_a;
+//     // int     temp;
+
+//     // temp_a = stack_a->head;
+//     // temp_b = stack_b->head;
+//     // if(temp_a)
+//     // {
+//     //     temp = temp_b->num;
+//     //     push_front(stack_a->head, temp, temp_a->index);
+//     //     deleteNode(stack_b->head, temp_b);
+//     // }
+// }

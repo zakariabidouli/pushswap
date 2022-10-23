@@ -3,13 +3,14 @@
 NAME 	= pushswap
 
 CC 		= gcc
-FLAGS	= 
+FLAGS	= -Wall -Wextra -Werror -g
 
 
 
-SRC 	 =  main.c utils.c list_utils.c moves_swap.c \
-			moves_push.c moves_up.c moves_down.c 	\
-			sort.c parse.c
+SRC 	 =  main.c utils.c list_utils.c moves_swap.c 	\
+			moves_push.c moves_up.c moves_down.c 		\
+			sort.c parse.c solve.c crack_a.c crack_b.c 	\
+			moves_list.c
 
 OBJS 		= $(SRC:%.c=%.o) 
 	 

@@ -4,22 +4,25 @@ void    duplicated(t_stk *stack)
 {
     t_stack *tmp;
     t_stack *tmp2;
-    int     i;
+    size_t     i;
 
-    tmp = stack->head;
     i = 0;
-    while (tmp)
-    {
+    tmp = stack->head;
+    // printf("sizeeeeeee :%zu",stack->size);
+    while (i < stack->size)
+    {   
         tmp2 = tmp->next;
-        while (tmp2)
+        while (tmp != tmp2)
         {
             if (tmp->num == tmp2->num)
             {
                 printf("duplicated value : %d\n", tmp->num);
                 exit(0);
             }
-            tmp2 = tmp2->next;
+            else
+                tmp2 = tmp2->next;
         }
+        i++;
         tmp = tmp->next;
     }
 }
@@ -70,74 +73,81 @@ void		sort_position(t_stack *h, t_stk *inf)
 //     t_stk_inf info;
 
 // }
-static void ft_putchar(char c)
-{
-    write(1, &c, 1);
-}
+// static void ft_putchar(char c)
+// {
+//     write(1, &c, 1);
+// }
 
-void	ft_putnbr_fd(int nb, int fd)
-{
-	unsigned int	nbr;
+// void	ft_putnbr_fd(int nb, int fd)
+// {
+// 	unsigned int	nbr;
 
-	if (nb == 0)
-	{
-		ft_putchar_fd ('0', fd);
-		return ;
-	}
-	if (nb < 0)
-	{
-		ft_putchar_fd ('-', fd);
-		nbr = nb * -1;
-	}
-	else
-		nbr = nb;
-	if (nbr > 9)
-	{
-		ft_putnbr_fd (nbr / 10, fd);
-		ft_putnbr_fd (nbr % 10, fd);
-	}
-	else
-		ft_putchar_fd (nbr + '0', fd);
-}
+// 	if (nb == 0)
+// 	{
+// 		ft_putchar_fd ('0', fd);
+// 		return ;
+// 	}
+// 	if (nb < 0)
+// 	{
+// 		ft_putchar_fd ('-', fd);
+// 		nbr = nb * -1;
+// 	}
+// 	else
+// 		nbr = nb;
+// 	if (nbr > 9)
+// 	{
+// 		ft_putnbr_fd (nbr / 10, fd);
+// 		ft_putnbr_fd (nbr % 10, fd);
+// 	}
+// 	else
+// 		ft_putchar_fd (nbr + '0', fd);
+// }
 
-static  void ft_putstr(char *s)
-{
-    while (*s)
-        write(1, s++, 1);
-}
+// static  void ft_putstr(char *s)
+// {
+//     while (*s)
+//         write(1, s++, 1);
+// }
 
 
 
-static void	print_stack(t_stk *stack,
-				t_stack **current,
-				size_t i)
-{
-	if (i < stack->size)
-	{
-		ft_putchar(' ');
-		printf("%d", (*current)->num);
-		ft_putchar(' ');
-		(*current) = (*current)->next;
-	}
-	else
-		ft_putstr("             ");
-}
+// static void	print_stack(t_stk *stack,
+// 				t_stack **current,
+// 				size_t i)
+// {
+// 	if (i < stack->size)
+// 	{
+// 		ft_putchar(' ');
+// 		printf("%d", (*current)->num);
+// 		ft_putchar(' ');
+// 		(*current) = (*current)->next;
+// 	}
+// 	else
+// 		ft_putstr("             ");
+// }
 
 int main(int ac, char **av)
 {
     t_stk           *stack_idx;
+    t_stk           *stack_b;
     t_stack         *s;
+    t_moves_list         *command_list;
+    t_moves         *f;
     // t_stack         *f;
     // t_stk_inf       *info;
-    
+
     if(ac >= 2)
     {
+        stack_b = init_stack();
         // stack_idx = parse(ac, av);
         duplicated(stack_idx = parse(ac, av));
         sort_position(stack_idx->head, stack_idx);
-        to_keep(stack_idx, markup_index);
+        to_keep(stack_idx, &markup_index);
+        command_list = solve(stack_idx, &markup_index);
+        // s_a(stack_idx);
+        // r_a(stack_idx);
+        // p_b_l(stack_idx, stack_b,command_list);
         // to_keep(stack_idx, markup_greater);
-        stack_idx = solve(stack_idx, markup(stack_idx, markup_index));
         // free_stack(stack_idx);
         // mark_index(&stack_idx->head, stack_idx->markup_head);
         // sort(head_a, head_b, &info_a);
@@ -146,20 +156,26 @@ int main(int ac, char **av)
         // r_a(&stack_idx->head);
         // print_stack(stack_idx, &stack_idx->markup_head, stack_idx->size);
         // s = stack_idx->head_a;
-        // s = stack_idx->head;
-        // while(s) 
-        // {
-        //     printf("################ :%d\n", s->num);
-        //     // printf("################ :%d\n", f->num);
-        //     printf("################ \n");
-        //     printf("################ :%zd\n", s->index);
-        //     printf("################ :%u\n", s->keep);
-        //     //  printf("################ :%d\n", f->position);
-        //     printf("################ \n");
-
-        //     s =  s->next;
-        //     // f =  f->next;
-        // }
+        s = stack_idx->head;
+        printf("########################## :%d\n\n", s->num);
+        printf("################ :%zd\n\n", s->index);
+        printf("################ :%u\n\n", s->keep);
+        printf("################ :%zu\n\n", stack_idx->pairs);
+        s =  s->next;
+        while(s != stack_idx->head)  
+        {
+            printf("####################### :%d\n\n", s->num);
+            printf("################ :%zd\n\n", s->index);
+            printf("################ :%u\n\n", s->keep);
+            printf("################ :%zu\n\n", stack_idx->pairs);
+            s =  s->next;
+        }
+        f = command_list->head;
+        while(f)
+        {
+            printf("###### :%s\n ", f->name);
+            f = f->next;
+        }
     }
     else
         printf("Error_args\n");

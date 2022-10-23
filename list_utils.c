@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void push_front(t_stack ** head_ref, int num, int index)
+void push_front(t_stack *head_ref, int num, int index)
 {
     t_stack *new_node;
 
@@ -9,30 +9,30 @@ void push_front(t_stack ** head_ref, int num, int index)
     new_node->num = num;
     new_node->index = index;
 
-    new_node->next = (*head_ref);
+    new_node->next = head_ref;
     new_node->prev = NULL;
  
-    if ((*head_ref) != NULL)
-        (*head_ref)->prev = new_node;
+    if (head_ref != NULL)
+        head_ref->prev = new_node;
  
-    (*head_ref) = new_node;
+    head_ref = new_node;
 }
 
-void insertAfter(t_stack *prev_node, int num, int index)
-{
-    t_stack *new_node;
-    if (prev_node == NULL)
-        return;
- 
-    new_node = (t_stack *)malloc(sizeof(t_stack));
-    new_node->num = num;
-    new_node->index = index;
-    new_node->next = prev_node->next;
-    prev_node->next = new_node;
-    new_node->prev = prev_node;
-    if (new_node->next != NULL)
-        new_node->next->prev = new_node;
-}
+// void insertAfter(t_stack *prev_node, t_stack *new_node,int num, int index)
+// {
+//     // t_stack *new_node;
+//     printf("zzzzaaaaaab\n");
+
+//     if (prev_node == NULL)
+//         return; 
+//     // new_node = create_node(num, index);
+//     prev_node->next = new_node;
+//     new_node->prev = prev_node;
+//     new_node->next = NULL;
+//     // new_node->prev = prev_node;
+//     // if (new_node->next != NULL)
+//     //     new_node->next->prev = new_node;
+// }
 
 t_stack *create_node(int num)
 {
@@ -54,29 +54,35 @@ void append(t_stk   *stack, int num)
     t_stack *last;
 
     new_node = create_node(num);
-    stack->size++;
-    if (stack->head == NULL)
+    if(stack && new_node)
     {
-        stack->head = new_node;
-        return;
+        if (!stack->head)
+		{
+			stack->head = new_node;
+			stack->head->prev = stack->head;
+			stack->head->next = stack->head;
+		}
+		else
+		{
+			last = stack->head->prev;
+			new_node->prev = last;
+			last->next = new_node;
+			new_node->next = stack->head;
+			stack->head->prev = new_node;
+		}
+		stack->size++;
     }
-    last = stack->head;
-    while (last->next != NULL)
-        last = last->next;
-    last->next = new_node;
-    new_node->prev = last;
-    return;
-
-    
 }
 
-void deleteNode(t_stack ** head_ref, t_stack* del)
+    
+
+void deleteNode(t_stack *head_ref, t_stack* del)
 {
-    if (*head_ref == NULL || del == NULL)
+    if (head_ref == NULL || del == NULL)
         return;
  
-    if (*head_ref == del)
-        *head_ref = del->next;
+    if (head_ref == del)
+        head_ref = del->next;
  
     if (del->next != NULL)
         del->next->prev = del->prev;

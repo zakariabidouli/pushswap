@@ -13,54 +13,56 @@
 //         it = it->next;
 //     return (i);
 // }
-void    in_top(int shift, t_stack **head_a)
+void    in_top(int shift, t_stk *stack)
 {
-    t_stack *it;
-    int     i;
+    // t_stack *it;
+    // int     i;
 
     // it = &head_a;
     // printf("################# in top\n");
     while (--shift >= 0)
-        r_a(head_a);
+        r_a(stack);
 }
 
-void    in_flop(int shift, t_stack **head_a)
+void    in_flop(int shift, t_stk *stack)
 {
-    t_stack *it;
-    int     i;
+    // t_stack *it;
+    // int     i;
 
     // it = head_a;
     // printf("################# in flop\n");
     while (--shift >= 0)
-        rr_a(head_a);
+        rr_a(stack);
 }
 
-void    to_top(t_stack **head_a, t_stk *inf)
+void    to_top(t_stk *stack)
 {
     t_stack  *it;
     int      median;
     int      i;
 
-    median = inf->size / 2;
-    i = -1;
-    it = *head_a;
-    while(it && ++i < inf->size)
+    median = stack->size / 2;
+	// printf("median = %d\n", median);
+    i = 0;
+    it = stack->head;
+    while(it && (size_t)i < stack->size)
     {
         if (it->index == 0)
         {
-            if (i + 1 <= median)
+            if ((i + 1)<= median)
             {
-                // printf("################ wsl : %d\n", median);
-                in_top(i, head_a);
+                in_top(i, stack);
             }
-            else if (i + 1 > median)
-                in_flop((inf->size - i) , head_a);
+            else if ((i + 1) > median)
+                in_flop((stack->size - i) , stack);
+			// printf("\n################ wsl : %d\n", median);
             break;
         }
+		i++;
         it = it->next;
     }
-    
 }
+
 // void    great_than(t_stack **head_a)
 // {
 //     t_stack *it;
@@ -207,17 +209,19 @@ size_t	markup_greater(t_stk *stack,
 void	to_keep(t_stk *stack,
 			size_t (*markup)(t_stk *, t_stack *))
 {
-	size_t			i;
+	size_t			i;	
 	size_t			current_pairs;
 	t_stack	        *current;
 
 	if (stack)
 	{
-		to_top(&stack->head, stack);
-		i = 0;
+		to_top(stack);
+		// printf("stack\n\n");
+		i = 1;
+		// printf("zaaabn\n");	
 		current = stack->head;
 		
-		while (i < stack->size && current->next)
+		while (i < stack->size && current->next && current)
 		{
 			current_pairs = markup(stack, current);
 			if (current_pairs > stack->pairs)
