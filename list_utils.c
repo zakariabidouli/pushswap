@@ -18,22 +18,6 @@ void push_front(t_stack *head_ref, int num, int index)
     head_ref = new_node;
 }
 
-// void insertAfter(t_stack *prev_node, t_stack *new_node,int num, int index)
-// {
-//     // t_stack *new_node;
-//     printf("zzzzaaaaaab\n");
-
-//     if (prev_node == NULL)
-//         return; 
-//     // new_node = create_node(num, index);
-//     prev_node->next = new_node;
-//     new_node->prev = prev_node;
-//     new_node->next = NULL;
-//     // new_node->prev = prev_node;
-//     // if (new_node->next != NULL)
-//     //     new_node->next->prev = new_node;
-// }
-
 t_stack *create_node(int num)
 {
     t_stack *new_node;

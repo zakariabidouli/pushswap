@@ -7,7 +7,7 @@ static  void    array(t_stk *stack, int ac,char **av)
     i = 1;
     while (i < ac)
     {   
-        if(!isNumber(av[i], false))
+        if(!is_int(av[i], false))
             printf("Error_!digit\n");
         append(stack, ft_atoi(av[i]));
         i++;
@@ -22,23 +22,14 @@ static  void    string(t_stk *stack, char *av)
 
     i = 0;
     items_count = 0;
-    // j = 0;
-    
-        // printf("%s\n", av);
-    
     num = ft_split(av, ' ', items_count);
-    // printf("zaaaaab\n");
     while (num[i] &&  0 <= items_count--)
     {
-        if(!isNumber(num[i], false))
+        if(!is_int(num[i], false))
             printf("Error_!digit\n");
-
-        // printf("num: %d\n", ft_atoi(num[i]));
         append(stack, ft_atoi(num[i]));
-        // printf("nooor\n");
         i++;
     }
-    // free(&num);
 }
 
 t_stk   *parse(int   ac, char    **av)
@@ -46,12 +37,10 @@ t_stk   *parse(int   ac, char    **av)
     t_stk   *stack;
 
     stack = init_stack();
-    // printf("nooor\n");
-    if (ac == 2)
+    if (ac == 2 && !is_num(av[1]))
         string(stack, av[1]);
     else
         array(stack, ac, av); 
-    // printf("size:  %zu\n", stack->size);
     if (!stack->size)
         printf("Error_!stack\n");
     return(stack);

@@ -100,22 +100,6 @@ char	**ft_split(char const *s, char c, int *items_count)
 	return (words);
 }
 
-// int isNumber(char *number)
-// {
-//     int i = 0;
-
-//     //checking for negative numbers
-//     if (number[0] == '-')
-//         i = 1;
-//     while (number[i] != 0)
-//     {
-//         // if (number[i] > '9' || number[i] < '0')
-//         if (!ft_isdigit(number[i]))
-//             return 0;
-//     }
-//     return 1;
-// }
-
 int		ft_isspace(int c)
 {
 	return (c == '\t' ||
@@ -127,7 +111,7 @@ int		ft_isspace(int c)
 }
 
 
-t_bool	isNumber(const char *str, t_bool strict)
+t_bool	is_int(const char *str, t_bool strict)
 {
 	unsigned int	result;
 	unsigned int	border;
@@ -154,4 +138,25 @@ t_bool	isNumber(const char *str, t_bool strict)
 		result = result * 10 + (str[i++] - '0');
 	}
 	return (!str[i] && digits);
+}
+
+t_bool	is_num(char *str)
+{
+	size_t	i;
+	size_t	digits;
+
+	i = 0;
+	digits = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if ((str[i] == '-' || str[i] == '+'))
+		i++;
+	while (ft_isdigit(str[i]) >= 0)
+	{
+		i++;
+		digits++;
+	}
+	if (!str[i] && digits)
+		return (true);
+	return (false);
 }

@@ -1,57 +1,30 @@
-NAME	= push_swap
+CC = gcc
 
-CFLAGS 	= -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
-SRC_DIRS = /srcs
+NAME = push_swap
 
-UTILS = crack_a.c crack_b.c list_utils.c moves_down.c moves_list.c	\
-		moves_push.c moves_swap.c moves_up.c parse.c solve.c		\
-		sort.c utils.c
+LIBFT_BINARY = libft.a
 
+M_SRCS 	= push_swap.c crack_a.c crack_b.c list_utils.c moves_down.c moves_list.c\
+		moves_push.c moves_swap.c moves_up.c parse.c solve.c sort.c utils.c
 
-SRC_FILES = srcs/push_swap.c\
-			$(UTILS:%.c=./src/%.c)
+M_OBJS = $(M_SRCS:.c=.o)
 
-OBJ_DIR = objs/
+all : $(NAME) clean
 
-OBJS 	= objs/push_swap.o\
-			$(UTILS:%.c=./objs/%.o)
+$(NAME) : $(M_OBJS)
+	$(CC) $(CFLAGS) ${LIBFT_BINARY}  $^ -o $@
+	@echo "DONE"
 
-PUSH_OBJ = $(addprefix $(OBJ_DIR)/,$(OBJ))
-
-HDR 		= -I./includes
-
-LIBFT_HDR 	= -I./includes/libft
-
-LIB_BINARY	= -L./includes/libft -lft
-
-LIBFT		= ./includes/libft/libft.a
-
-all: $(LIBFT) ./includes/libft/libft.a $(NAME)
-
-FORCE:		;
-
-$(LIBFT):	FORCE
-	@make -C ./includes/libft
-	mkdir -p $(OBJ_DIR)
-	@echo Create: Object directory ${OBJS}
-
-
-$(OBJ_DIR)/%.o: $(SRC_FILES)/%.c $(LIBFT)
-	gcc -g $(CFLAGS) $(HDR) $(LIBFT_HDR) -c $< -o $@
-
-$(NAME):$(PUSH_OBJ) ${OBJS} $(LIBFT) ./includes/push_swap.h
-	gcc -g $(OBJS) $(LIB_BINARY) -o $@
-	@echo "##### push_swap compiling finished! #####"
+%.o : %.c push_swap.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	# /bin/rm -f $(OBJS)
-	rm -rf $(OBJ_DIR)
-	make -C ./includes/libft clean
+	rm -rf $(M_OBJS) $(B_OBJS)
 
 fclean: clean
-	/bin/rm -f $(NAME)
-	@make -C ./includes/libft fclean
+	rm -rf $(NAME) $(bonus) 
 
 re: fclean all
 

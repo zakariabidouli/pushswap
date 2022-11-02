@@ -89,7 +89,8 @@ size_t		markup_index(t_stk *stack, t_stack *markup_head);
 void		to_keep(t_stk *stack,
 							size_t (*markup)(t_stk *, t_stack *));
 int         stacksize(t_stack **head_a);
-t_bool 		isNumber(const char *number,  t_bool strict);
+t_bool 		is_int(const char *number,  t_bool strict);
+t_bool		is_num(char *str);
 
 t_moves_list 		*init_moves(void);
 t_stk				*init_stack(void);

@@ -74,11 +74,5 @@ t_moves_list		*solve(t_stk	*stack_a,size_t(markup)(t_stk *stack, t_stack *markup
         sort_a(stack_a, command_list);
         free_stack(stack_b);
     }
-    // printf("saaalam\n");
-    // {   
-        // printf("\n#######wsslat\n");
-        // crack_b(stack_b, stack_b, markup, command_list);
-    // crack_b(stack_a, stack_b, markup(stack, markup_head), command_list);
     return (command_list);
-
 }
