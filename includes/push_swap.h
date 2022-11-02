@@ -1,6 +1,6 @@
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+#	define PUSH_SWAP_H
 
 #include"libft.h"
 #include<stdio.h>
@@ -18,7 +18,7 @@ typedef enum
 
 typedef struct s_stack{
 	int                num;
-	ssize_t            index;
+	size_t            index;
 	t_bool             keep;
 	struct s_stack     *next;
 	struct s_stack     *prev;
@@ -43,11 +43,15 @@ typedef struct	s_moves_list
 	t_moves		*head;
 	size_t 		size;
 }	t_moves_list;
-// typedef struct s_stk_inf{
-// 	t_stack **head_a;
-// 	t_stack **head_b;
-// 	int     size;
-// }t_stk_inf;
+
+typedef struct s_flag{
+	t_stack 	*flag_a;
+	t_stack 	*flag_b;
+	int 		a_moves;
+	int 		b_moves;
+	size_t 		size;
+	t_bool     	is_done;
+}	t_flag;
 
 
 char	     **ft_split(char const *s, char c, int *items_count);
@@ -59,16 +63,24 @@ void    s_a(t_stk *stack);
 void    s_x_l(t_stk  *stack, t_moves_list *list);
 void    s_b(t_stk  *stack);
 void    s_s(t_stk  *stack_a, t_stk  *stack_b);
+void    p_b_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list);
+void    p_a_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list);
+
 // void 	p_a(t_stk *stack_a,t_stk *stack_b);
 // void 	p_b(t_stk *stack_a,t_stk *stack_b);
 void    p_b_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
 void 	r_a(t_stk  *stack);
 void    r_b(t_stk  *stack);
 void    r_r(t_stk  *stack_a, t_stk  *stack_b);
-void    r_x_l(t_stk  *stack, t_moves_list *list);
+void    r_a_l(t_stk *stack, t_moves_list *list);
+void    r_b_l(t_stk *stack, t_moves_list *list);
+void 	rr_l(t_stk  *stack_a, t_stk  *stack_b, t_moves_list *list);
 void         rr_a(t_stk  *stack);
 void         rr_b(t_stk  *stack);
 void         rr_r(t_stk  *stack_a, t_stk  *stack_b);
+void 		rr_a_l(t_stk  *stack, t_moves_list *list);
+void 		rr_b_l(t_stk  *stack, t_moves_list *list);
+void 		rr_r_l(t_stk  *stack_a, t_stk  *stack_b, t_moves_list *list);
 // void         to_keep(t_stack **head, t_stk *inf);
 // void	to_keep(t_stk *stack,
 // 			size_t (*markup_stack)(t_stk *, t_stack *));
@@ -83,7 +95,7 @@ t_moves_list 		*init_moves(void);
 t_stk				*init_stack(void);
 t_stk				*parse(int ac, char **av);
 void    			duplicated(t_stk *stack);
-void    			crack_b(t_stk *stack, t_stk *stack_b,size_t (markup)(t_stk *stack, t_stack  *markup_head), t_moves_list  command_list);
+void    			crack_b(t_stk *stack_a, t_stk *stack_b, t_moves_list  *command_list);
 void    			crack_a(t_stk *stack_a, t_stk *stack_b, size_t (markup)(t_stk *stack, t_stack  *markup_head), t_moves_list  *command_list);
 t_moves_list		*solve(t_stk	*stack_a,size_t(markup)(t_stk *stack, t_stack *markup_head));
 void				free_stack(t_stk *stack);

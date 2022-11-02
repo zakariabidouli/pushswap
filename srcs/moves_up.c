@@ -38,13 +38,29 @@ void r_r(t_stk  *stack_a, t_stk  *stack_b)
 {
     up_shift_one(stack_a);
     up_shift_one(stack_b);
-    printf("r_r\n");
+    // printf("r_r\n");
 }
 
-void    r_x_l(t_stk *stack, t_moves_list *list)
+void    r_a_l(t_stk *stack, t_moves_list *list)
 {
     up_shift_one(stack);
     add_command(list, create_command("ra"));
-    printf("ra\n");
+    // printf("ra\n");
     // printf("heeere\n");
+}
+
+void    r_b_l(t_stk *stack, t_moves_list *list)
+{
+    up_shift_one(stack);
+    add_command(list, create_command("rb"));
+    // printf("rb\n");
+    // printf("heeere\n");
+}
+
+void rr_l(t_stk  *stack_a, t_stk  *stack_b, t_moves_list *list)
+{
+    up_shift_one(stack_a);
+    up_shift_one(stack_b);
+    add_command(list, create_command("rr"));
+    // printf("r_r\n");
 }

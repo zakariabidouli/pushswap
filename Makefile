@@ -1,31 +1,53 @@
-.PHONY: all clean fclean re
+NAME	= push_swap
 
-NAME 	= pushswap
+CFLAGS 	= -Wall -Wextra -Werror
 
-CC 		= gcc
-FLAGS	= -Wall -Wextra -Werror -g
+SRC_DIRS = srcs
+
+SRC_FILES := $(foreach dirname, $(SRC_DIRS), $(wildcard $(dirname)/*.c))
+
+OBJ_DIR = objs/
+
+OBJS 	=$(SRC:*.c=.o)
+
+PUSH_OBJ = $(addprefix $(OBJ_DIR)/,$(OBJ))
+
+HDR 		= -I./includes
+
+LIBFT_HDR 	= -I./includes/libft
+
+LIB_BINARY	= -L./includes/libft -lft
+
+LIBFT		= ./includes/libft/libft.a
+
+all: $(LIBFT) ./includes/libft/libft.a $(NAME)
+
+FORCE:		;
+
+# @echo Create: Object directory ${OBJS}
+$(LIBFT):	FORCE
+			make -C ./includes/libft
+
+$(OBJ_DIR): $(SRC_FILES) $(LIBFT)
+	mkdir -p $(OBJ_DIR) 
+	gcc -g $(CFLAGS) $(HDR) $(LIBFT_HDR) -c $< -o $@
+	${PUSH_OBJ}
+
+$(NAME):${OBJ_DIR} $(PUSH_OBJ) $(LIBFT) ./includes/push_swap.h
+	gcc -g $(OBJS) $(LIB_BINARY) -o $@
+	@echo "##### push_swap compiling finished! #####"
 
 
-
-SRC 	 =  main.c utils.c list_utils.c moves_swap.c 	\
-			moves_push.c moves_up.c moves_down.c 		\
-			sort.c parse.c solve.c crack_a.c crack_b.c 	\
-			moves_list.c
-
-OBJS 		= $(SRC:%.c=%.o) 
-	 
-all: $(NAME)
-
-$(NAME): $(OBJS)
-	 $(CC) $(FLAGS)  $(SRC) libft.a -o ${NAME} 
-
-$(OBJS): $(SRC)
-	 $(CC) $(FLAGS)  -c  $(SRC) 
 
 clean:
-	rm -rf $(OBJS) $(OBJS_B)
+	# /bin/rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
+	make -C ./includes/libft clean
 
 fclean: clean
-	rm -rf $(NAME)
+	/bin/rm -f $(NAME)
+	make -C ./includes/libft fclean
 
 re: fclean all
+
+.PHONY: all clean fclean re

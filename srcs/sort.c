@@ -141,7 +141,7 @@ void    to_top(t_stk *stack)
 size_t	markup_index(t_stk *stack,
 			t_stack *markup_head)
 {
-	ssize_t			index;
+	size_t			index;
 	size_t			pairs;
 	t_stack         *current;
 
@@ -180,7 +180,7 @@ size_t	markup_index(t_stk *stack,
 size_t	markup_greater(t_stk *stack,
 			t_stack *markup_head)
 {
-	ssize_t			index;
+	size_t			index;
 	size_t			pairs;
 	t_stack	        *current;
 

@@ -28,18 +28,40 @@ void down_shift_one(t_stk *stack)
 void rr_a(t_stk  *stack)
 {
     down_shift_one(stack);
-    printf("rr_a\n");
+    printf("rra\n");
 }
 
 void rr_b(t_stk  *stack)
 {
     down_shift_one(stack);
-    printf("rr_b\n");
+    printf("rrb\n");
 }
 
 void rr_r(t_stk  *stack_a, t_stk  *stack_b)
 {
     down_shift_one(stack_a);
     down_shift_one(stack_b);
-    printf("rr_r\n");
+    printf("rrr\n");
+}
+
+void rr_a_l(t_stk  *stack, t_moves_list *list)
+{
+    down_shift_one(stack);
+    add_command(list, create_command("rra"));
+    // printf("rra\n");
+}
+
+void rr_b_l(t_stk  *stack, t_moves_list *list)
+{
+    down_shift_one(stack);
+    add_command(list, create_command("rra"));
+    // printf("rrb\n");
+}
+
+void rr_r_l(t_stk  *stack_a, t_stk  *stack_b, t_moves_list *list)
+{
+    down_shift_one(stack_a);
+    down_shift_one(stack_b);
+    add_command(list, create_command("rrr"));
+    // printf("rrr\n");
 }

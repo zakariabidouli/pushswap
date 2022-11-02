@@ -51,6 +51,6 @@ void    crack_a(t_stk *stack_a, t_stk *stack_b, size_t (markup)(t_stk *stack, t_
 		else if (stack_a->head->keep == false)
 			p_b_l(stack_a, stack_b, command_list);
 		else
-			r_x_l(stack_a, command_list);
+			r_a_l(stack_a, command_list);
 	}
 }

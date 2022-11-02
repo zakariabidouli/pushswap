@@ -41,5 +41,5 @@ void    s_x_l(t_stk  *stack, t_moves_list *list)
 {
     swap_first(stack, stack->head, stack->head->next);
     add_command(list, create_command("sa"));
-    printf("sa\n");
+    // printf("sa\n");
 }
