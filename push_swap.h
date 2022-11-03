@@ -91,7 +91,7 @@ void		to_keep(t_stk *stack,
 int         stacksize(t_stack **head_a);
 t_bool 		is_int(const char *number,  t_bool strict);
 t_bool		is_num(char *str);
-
+void 		terminated(char const *s);
 t_moves_list 		*init_moves(void);
 t_stk				*init_stack(void);
 t_stk				*parse(int ac, char **av);

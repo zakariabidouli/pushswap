@@ -39,13 +39,15 @@ t_stack *a_element(t_stk *stack, size_t index)
     it = stack->head;
     if(index < it->index)
     {
-        while(index < it->index && it->index < it->next->index)
+        while(index < it->prev->index && it->index > it->prev->index)
             it = it->prev;
     }
     else
     {   
-        while(index > it->index && it->index > it->next->index)
+        while(index > it->prev->index && it->index < it->prev->index)
                 it = it->next;
+        if (index > it->index && it->index > it->next->index)
+			it = it->next;
     }
     return it;
 }
@@ -69,9 +71,6 @@ void    up_down(t_stk   *stack, size_t index, size_t *r, size_t *rr)
             current = current->prev;
         }
     }
-        // printf("zaaab ra  :%zd\n",*r);
-        // printf("zaaab rra :%zd\n",*rr);
-
 }
 
 void    set_flag(size_t    moves,t_flag new_flag, t_flag *info)
@@ -106,8 +105,6 @@ void    cal(t_stk *stack_a, t_stk *stack_b, t_stack *b, t_flag *info)
     new_flag.b_moves = 0;
     up_down(stack_a, new_flag.flag_a->index, &ra_move, &rra_move);
     up_down(stack_b, b->index, &rb_move, &rrb_move);
-        // printf("zaaab  :%zu\n",rb_move);
-        // printf("zaaab  :%zu\n",rrb_move);
     set_flag(max(ra_move , rb_move), new_flag, info);  
     new_flag.a_moves = 1;
     set_flag((rra_move + rb_move), new_flag, info);
@@ -115,11 +112,6 @@ void    cal(t_stk *stack_a, t_stk *stack_b, t_stack *b, t_flag *info)
     set_flag(max(rra_move , rrb_move), new_flag, info);  
     new_flag.b_moves = 0;
     set_flag((ra_move + rrb_move), new_flag, info);
-    // printf("zaaab ra :%zd\n",rb_move);
-    // printf("zaaab rrb :%zd\n",rrb_move);
-    // printf("zaab  flags : %d\n", new_flag.b_moves);  
-    // printf("zaab  flags : %d\n", new_flag.a_moves);  
-    // printf("zaaaaaab : %d\n", new_flag.flag_b->num);
 }
 
 
@@ -132,9 +124,8 @@ void    calculate_moves(t_stk *stack_a, t_stk *stack_b, t_flag *info)
     {
         b = stack_b->head;
         i = 0;
-        while(i <= stack_b->size)
+        while(i < stack_b->size)
         {
-            // printf("zaaab :%zu\n", stack_b->size);
             cal(stack_a, stack_b, b, info);
             i++;
             b = b->next;

@@ -108,9 +108,11 @@ void free_c(t_moves_list *list)
 	free(list);
 }
 
+
 int main(int ac, char **av)
 {
     t_stk           *stack_idx;
+    // t_stack         *s;
     t_stk           *stack_greater;
     t_moves_list    *command_list_index;
     t_moves_list    *command_list_greater;
@@ -133,9 +135,23 @@ int main(int ac, char **av)
         print_c(command_list_greater);
         free_c(command_list_index);
         free_c(command_list_greater);
+        // s = stack_idx->head;
+        // printf("########################## :%d\n\n", s->num);
+        // // printf("################ :%zd\n\n", s->index);
+        // // printf("################ :%u\n\n", s->keep);
+        // // printf("################ :%zu\n\n", s->pairs);
+        // s =  s->next;
+        // while(s != stack_idx->head)  
+        // {
+        //     printf("####################### :%d\n\n", s->num);
+        //     // printf("################ :%zd\n\n", s->index);
+        //     // printf("################ :%u\n\n", s->keep);
+        //     // printf("################ :%zu\n\n", stack_great->pairs);
+        //     s =  s->next;
+        // }
     }
     else
-        printf("Error_args\n");
+        terminated("ERR_ARGS");
     return (0);
 }
         
@@ -150,21 +166,6 @@ int main(int ac, char **av)
         // rr_a(&stack_idx->head);
         // r_a(&stack_idx->head);
         // print_stack(stack_idx, &stack_idx->markup_head, stack_idx->size);
-        // s = stack_idx->head_a;
-        // s = stack_great->head;
-        // printf("########################## :%d\n\n", s->num);
-        // printf("################ :%zd\n\n", s->index);
-        // printf("################ :%u\n\n", s->keep);
-        // printf("################ :%zu\n\n", stack_great->pairs);
-        // s =  s->next;
-        // while(s != stack_great->head)  
-        // {
-        //     printf("####################### :%d\n\n", s->num);
-        //     printf("################ :%zd\n\n", s->index);
-        //     printf("################ :%u\n\n", s->keep);
-        //     printf("################ :%zu\n\n", stack_great->pairs);
-        //     s =  s->next;
-        // }
         // f = command_list_greater->head;
         // while(f)
         // {

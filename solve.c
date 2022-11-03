@@ -6,7 +6,7 @@ t_stk			*init_stack(void)
 	t_stk *stack;
 
 	if (!(stack = (t_stk *)malloc(sizeof(t_stk))))
-		printf("error creating command\n");
+		terminated("error creating command\n");
 	stack->head = NULL;
 	stack->size = 0;
 	stack->pairs = 0;
@@ -19,7 +19,7 @@ t_moves_list *init_moves(void)
     t_moves_list *command_list;
 
     if(!(command_list = (t_moves_list *)malloc(sizeof(t_moves_list))))
-        printf("error creating command\n");
+        terminated("error creating command\n");
     command_list->head = NULL;  
     command_list->size = 0;
     return(command_list);  
