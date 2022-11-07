@@ -55,35 +55,23 @@ t_stack	*pop(t_stk *stack)
 	return (elem);
 }
 
-void    p_b(t_stk *stack_a,  t_stk *stack_b)
-{
-    t_stack   *to_pop;
+	// void    p_b(t_stk *stack_a,  t_stk *stack_b)
+	// {
+	//     push(stack_b, (pop(stack_a)));
+	// }
 
-    to_pop = pop(stack_a);
-    push(stack_b, (to_pop));
-}
-
-void    p_a(t_stk *stack_a,  t_stk *stack_b)
-{
-    t_stack   *to_pop;
-
-    to_pop = pop(stack_a);
-    push(stack_b, (to_pop));
-}
+	// void    p_a(t_stk *stack_a,  t_stk *stack_b)
+	// {
+	//     push(stack_b, (pop(stack_a)));
+	// }
 
 void    p_b_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list)
 {
-    t_stack   *to_pop;
-
-    to_pop = pop(stack_a);
-    push(stack_b, (to_pop));
+    push(stack_b, (pop(stack_a)));
     add_command(list, create_command("pb"));
 }
 void    p_a_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list)
 {
-    t_stack   *to_pop;
-
-    to_pop = pop(stack_b);
-    push(stack_a, (to_pop));
+    push(stack_a, (pop(stack_b)));
     add_command(list, create_command("pa"));
 }

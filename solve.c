@@ -1,5 +1,4 @@
 #include "push_swap.h"
-// #include "unistd.h"
 
 t_stk			*init_stack(void)
 {
@@ -67,12 +66,9 @@ t_moves_list		*solve(t_stk	*stack_a,size_t(markup)(t_stk *stack, t_stack *markup
 
     command_list = init_moves();
     stack_b = init_stack();
-    if(stack_a && stack_b && command_list)
-    {
-        crack_a(stack_a, stack_b, markup, command_list);
-        crack_b(stack_a, stack_b, command_list);
-        sort_a(stack_a, command_list);
-        free_stack(stack_b);
-    }
+    crack_a(stack_a, stack_b, markup, command_list);
+    crack_b(stack_a, stack_b, command_list);
+    sort_a(stack_a, command_list);
+    free_stack(stack_b);
     return (command_list);
 }

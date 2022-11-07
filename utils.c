@@ -151,7 +151,7 @@ t_bool	is_num(char *str)
 		i++;
 	if ((str[i] == '-' || str[i] == '+'))
 		i++;
-	while (ft_isdigit(str[i]) >= 0)
+	while (ft_isdigit(str[i]) >= 0 && str[i])
 	{
 		i++;
 		digits++;

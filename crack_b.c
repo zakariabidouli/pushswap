@@ -44,7 +44,7 @@ t_stack *a_element(t_stk *stack, size_t index)
     }
     else
     {   
-        while(index > it->prev->index && it->index < it->prev->index)
+        while(index > it->prev->index && it->index < it->next->index)
                 it = it->next;
         if (index > it->index && it->index > it->next->index)
 			it = it->next;

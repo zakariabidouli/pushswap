@@ -8,7 +8,7 @@ static  void    array(t_stk *stack, int ac,char **av)
     while (i < ac)
     {   
         if(!is_int(av[i], false))
-            printf("Error_!digit\n");
+            terminated("Error\n");
         append(stack, ft_atoi(av[i]));
         i++;
     }
@@ -26,7 +26,7 @@ static  void    string(t_stk *stack, char *av)
     while (num[i] &&  0 <= items_count--)
     {
         if(!is_int(num[i], false))
-            printf("Error_!digit\n");
+            terminated("Error\n");
         append(stack, ft_atoi(num[i]));
         i++;
     }
@@ -37,11 +37,11 @@ t_stk   *parse(int   ac, char    **av)
     t_stk   *stack;
 
     stack = init_stack();
-    if (ac == 2 && !is_num(av[1]))
+    if (ac == 2 && is_num(av[1]))
         string(stack, av[1]);
     else
-        array(stack, ac, av); 
+        array(stack, ac, av);
     if (!stack->size)
-        printf("Error_!stack\n");
+        terminated("Error\n");
     return(stack);
 }

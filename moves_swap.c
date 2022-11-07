@@ -22,10 +22,10 @@ void    s_a(t_stk *stack)
     swap_first(stack, stack->head, stack->head->next);
 }
 
-void    s_b(t_stk  *stack)
-{
-    swap_first(stack, stack->head, stack->head->next);
-}
+// void    s_b(t_stk  *stack)
+// {
+//     swap_first(stack, stack->head, stack->head->next);
+// }
 
 void    s_s(t_stk  *stack_a, t_stk  *stack_b)
 {

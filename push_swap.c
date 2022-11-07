@@ -28,7 +28,7 @@ void    duplicated(t_stk *stack)
         {
             if (tmp->num == tmp2->num)
             {
-                terminated("duplicated value");
+                terminated("Error\n");
             }
             else
                 tmp2 = tmp2->next;
@@ -108,11 +108,11 @@ void free_c(t_moves_list *list)
 	free(list);
 }
 
-
 int main(int ac, char **av)
 {
     t_stk           *stack_idx;
     // t_stack         *s;
+    // t_stack         *f;
     t_stk           *stack_greater;
     t_moves_list    *command_list_index;
     t_moves_list    *command_list_greater;
@@ -122,14 +122,14 @@ int main(int ac, char **av)
         stack_idx = parse(ac, av);
         duplicated(stack_idx = parse(ac, av));
         sort_position(stack_idx->head, stack_idx);
-        to_keep(stack_idx, &markup_index);
+        to_keep(stack_idx, &markup_index );
         command_list_index = solve(stack_idx, &markup_index);
-        free_stack(stack_idx);
+        // free_stack(stack_idx);
         duplicated(stack_greater = parse(ac, av));
         sort_position(stack_greater->head, stack_greater);
         to_keep(stack_greater, &markup_greater);
         command_list_greater = solve(stack_greater, &markup_greater);
-        free_stack(stack_greater);
+        // free_stack(stack_greater);
         if(command_list_index->size < command_list_greater->size)
 			print_c(command_list_index);
         print_c(command_list_greater);
@@ -137,21 +137,24 @@ int main(int ac, char **av)
         free_c(command_list_greater);
         // s = stack_idx->head;
         // printf("########################## :%d\n\n", s->num);
-        // // printf("################ :%zd\n\n", s->index);
-        // // printf("################ :%u\n\n", s->keep);
-        // // printf("################ :%zu\n\n", s->pairs);
         // s =  s->next;
         // while(s != stack_idx->head)  
         // {
         //     printf("####################### :%d\n\n", s->num);
-        //     // printf("################ :%zd\n\n", s->index);
-        //     // printf("################ :%u\n\n", s->keep);
-        //     // printf("################ :%zu\n\n", stack_great->pairs);
         //     s =  s->next;
+        // }
+        // f = stack_idx->head;
+        // printf("GREATER#####################\n\n");
+        // printf("########################## :%d\n\n", f->num);
+        // f =  f->next;
+        // while(f != stack_idx->head)  
+        // {
+        //     printf("####################### :%d\n\n", f->num);
+        //     f =  f->next;
         // }
     }
     else
-        terminated("ERR_ARGS");
+        terminated("Error");
     return (0);
 }
         

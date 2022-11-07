@@ -9,6 +9,9 @@ void down_shift_one(t_stk *stack)
 void rr_a(t_stk  *stack)
 {
     down_shift_one(stack);
+    write(1, "rra\n", 4);
+    write(1, "\n", 1);
+
 }
 
 void rr_b(t_stk  *stack)

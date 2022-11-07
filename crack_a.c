@@ -3,7 +3,7 @@
 static t_bool	needs_pb(t_stk *stack_a)
 {
 
-	size_t			i;
+	size_t	i;
 	t_stack	*current;
 
 	if (stack_a)
@@ -14,8 +14,8 @@ static t_bool	needs_pb(t_stk *stack_a)
 		{
 			if (!current->keep)
 				return (true);
-			current = current->next;
 			i++;
+			current = current->next;
 		}
 	}
 	return (false);
@@ -26,7 +26,7 @@ static t_bool	needs_sa(t_stk *stack_a,
 {
 	size_t	current_pairs;
 
-	if (stack_a && stack_a->size >= 2)
+	if (stack_a && stack_a->size >= 1)
 	{
 		s_a(stack_a);
 		current_pairs = markup(stack_a, stack_a->markup_head);

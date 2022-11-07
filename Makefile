@@ -11,7 +11,7 @@ M_SRCS 	= push_swap.c crack_a.c crack_b.c list_utils.c moves_down.c moves_list.c
 
 M_OBJS = $(M_SRCS:.c=.o)
 
-all : $(NAME) clean
+all : $(NAME)
 
 $(NAME) : $(M_OBJS)
 	$(CC) $(CFLAGS) ${LIBFT_BINARY}  $^ -o $@
