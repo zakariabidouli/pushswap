@@ -1,17 +1,18 @@
 #include "push_swap.h"
 
-static  void    array(t_stk *stack, int ac,char **av)
+static  void    array(t_stk *stack, int ac,char *av)
 {
-    int i;
+    // int i;
 
-    i = 1;
-    while (i < ac)
-    {   
-        if(!is_int(av[i], false))
-            terminated("Error\n");
-        append(stack, ft_atoi(av[i]));
-        i++;
-    }
+    // i = 1;÷
+    // while (i < ac)
+    // {   
+        (void)ac;
+        if(!is_int(av, false))
+            terminated("Error_arr\n");
+        append(stack, ft_atoi(av));
+        // i++;
+    // }
 }
 
 static  void    string(t_stk *stack, char *av)
@@ -26,21 +27,43 @@ static  void    string(t_stk *stack, char *av)
     while (num[i] &&  0 <= items_count--)
     {
         if(!is_int(num[i], false))
-            terminated("Error\n");
+            terminated("Error_str\n");
         append(stack, ft_atoi(num[i]));
         i++;
     }
+    split_free(&num);
+}
+
+int is_one(char *av)
+{
+    int i;
+
+    i = 0;
+    while (av[i])
+    {
+        // printf("%c", av[i]);
+        if (av[i] == ' ' && av[i + 1] != ' ')
+            return (1);
+        i++;
+    }
+    return (0);
 }
 
 t_stk   *parse(int   ac, char    **av)
 {
     t_stk   *stack;
+    int i ;
 
     stack = init_stack();
-    if (ac == 2 && is_num(av[1]))
-        string(stack, av[1]);
-    else
-        array(stack, ac, av);
+    i = 1;
+    while (ac >= 2 && av[i])
+    {
+        if(is_one(av[i]))
+            string(stack, av[i]);
+        else
+            array(stack, ac, av[i]);
+        i++;
+    }
     if (!stack->size)
         terminated("Error\n");
     return(stack);

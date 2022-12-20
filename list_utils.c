@@ -58,7 +58,6 @@ void append(t_stk   *stack, int num)
     }
 }
 
-    
 
 void deleteNode(t_stack *head_ref, t_stack* del)
 {

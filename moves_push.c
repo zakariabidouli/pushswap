@@ -67,11 +67,21 @@ t_stack	*pop(t_stk *stack)
 
 void    p_b_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list)
 {
-    push(stack_b, (pop(stack_a)));
+	t_stack *elem;
+
+	elem = pop(stack_a);
+    push(stack_b, elem);
+	// free(elem);
     add_command(list, create_command("pb"));
+
 }
+
 void    p_a_l(t_stk *stack_a,  t_stk *stack_b, t_moves_list *list)
 {
-    push(stack_a, (pop(stack_b)));
+	t_stack *elem;
+
+	elem = pop(stack_b);
+    push(stack_a, elem);
+	// free(elem);
     add_command(list, create_command("pa"));
 }

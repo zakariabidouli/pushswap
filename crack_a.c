@@ -1,10 +1,9 @@
 #include "push_swap.h"
 
-static t_bool	needs_pb(t_stk *stack_a)
+static t_bool needs_pb(t_stk *stack_a)
 {
-
-	size_t	i;
-	t_stack	*current;
+	size_t i;
+	t_stack *current;
 
 	if (stack_a)
 	{
@@ -21,12 +20,12 @@ static t_bool	needs_pb(t_stk *stack_a)
 	return (false);
 }
 
-static t_bool	needs_sa(t_stk *stack_a,
-					size_t (*markup)(t_stk *, t_stack *))
+static t_bool needs_sa(t_stk *stack_a,
+					   size_t (*markup)(t_stk *, t_stack *))
 {
-	size_t	current_pairs;
+	size_t current_pairs;
 
-	if (stack_a && stack_a->size >= 1)
+	if (stack_a && stack_a->size >= 2)
 	{
 		s_a(stack_a);
 		current_pairs = markup(stack_a, stack_a->markup_head);
@@ -38,10 +37,9 @@ static t_bool	needs_sa(t_stk *stack_a,
 	return (false);
 }
 
-
-void    crack_a(t_stk *stack_a, t_stk *stack_b, size_t (markup)(t_stk *stack, t_stack  *markup_head), t_moves_list  *command_list)
+void crack_a(t_stk *stack_a, t_stk *stack_b, size_t markup(t_stk *, t_stack *), t_moves_list *command_list)
 {
-    while (needs_pb(stack_a))
+	while (needs_pb(stack_a))
 	{
 		if (needs_sa(stack_a, markup))
 		{

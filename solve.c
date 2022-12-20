@@ -5,7 +5,7 @@ t_stk			*init_stack(void)
 	t_stk *stack;
 
 	if (!(stack = (t_stk *)malloc(sizeof(t_stk))))
-		terminated("error creating command\n");
+		terminated("error creating stack\n");
 	stack->head = NULL;
 	stack->size = 0;
 	stack->pairs = 0;
@@ -24,51 +24,53 @@ t_moves_list *init_moves(void)
     return(command_list);  
 }
 
-void    count(t_stk *a, size_t *ra_move, size_t *rra_move)
-{
-    t_stack  *it;
-
-    if(a && a->head)
-    {
-        it = a->head;
-        while(it->index != 0)
-        {
-            (*ra_move)++;
-            it = it->next;
-        }
-        it = a->head;
-        while(it->index != 0)
-        {
-            (*rra_move)++;
-            it = it->prev;
-        }        
-    }
-}
+// void    count(t_stk *a, size_t *ra_move, size_t *rra_move)
+// {
+    
+// }
 
 void    sort_a(t_stk    *stack_a, t_moves_list *list)
 {
+    t_stack  *it;
     size_t ra_move;
     size_t rra_move;
 
-    ra_move = 0;
-    rra_move = 0;
-    count(stack_a, &ra_move, &rra_move);
-    while(stack_a->head->index != 0 && (ra_move < rra_move))
-        r_a_l(stack_a, list); 
-    while(stack_a->head->index != 0 && (ra_move > rra_move)) 
-        rr_a_l(stack_a, list); 
+    if(stack_a && stack_a->head)
+    {
+        it = stack_a->head;
+        ra_move = 0;
+        while(it->index != 0)
+        {
+            ra_move++;
+            it = it->next;
+        }
+        it = stack_a->head;
+        rra_move = 0;
+        while(it->index != 0)
+        {
+            rra_move++;
+            it = it->prev;
+        }        
+        // count(stack_a, &ra_move, &rra_move);
+        while(stack_a->head->index != 0 && (ra_move < rra_move))
+            r_a_l(stack_a, list); 
+        while(stack_a->head->index != 0 && (ra_move > rra_move)) 
+            rr_a_l(stack_a, list); 
+    }
 }
 
-t_moves_list		*solve(t_stk	*stack_a,size_t(markup)(t_stk *stack, t_stack *markup_head))
+t_moves_list		*solve(t_stk	*stack_a,size_t(markup)(t_stk *, t_stack *))
 {
-    t_moves_list     *command_list;
+    t_moves_list    *command_list;
     t_stk           *stack_b;
+    // t_stack           *s;
 
     command_list = init_moves();
     stack_b = init_stack();
     crack_a(stack_a, stack_b, markup, command_list);
     crack_b(stack_a, stack_b, command_list);
     sort_a(stack_a, command_list);
+    // print_stacks(stack_a, stack_b, 1);
     free_stack(stack_b);
     return (command_list);
 }

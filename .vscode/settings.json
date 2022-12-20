@@ -28,5 +28,16 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "__locale": "c",
+    "atomic": "c",
+    "cstdlib": "c",
+    "locale": "c",
+    "new": "c",
+    "ostream": "c",
+    "typeinfo": "c",
+    "algorithm": "c",
+    "complex": "c"
+  }
 }
