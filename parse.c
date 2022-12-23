@@ -1,21 +1,13 @@
 #include "push_swap.h"
 
-static  void    array(t_stk *stack, int ac,char *av)
+static void array(t_stk *stack, char *av)
 {
-    // int i;
-
-    // i = 1;÷
-    // while (i < ac)
-    // {   
-        (void)ac;
-        if(!is_int(av, false))
-            terminated("Error_arr\n");
-        append(stack, ft_atoi(av));
-        // i++;
-    // }
+    if (!is_int(av, false))
+        terminated("Error_arr\n");
+    append(stack, ft_atoi(av));
 }
 
-static  void    string(t_stk *stack, char *av)
+static void string(t_stk *stack, char *av)
 {
     char **num;
     int i;
@@ -24,9 +16,9 @@ static  void    string(t_stk *stack, char *av)
     i = 0;
     items_count = 0;
     num = ft_split(av, ' ', items_count);
-    while (num[i] &&  0 <= items_count--)
+    while (num[i] && 0 <= items_count--)
     {
-        if(!is_int(num[i], false))
+        if (!is_int(num[i], false))
             terminated("Error_str\n");
         append(stack, ft_atoi(num[i]));
         i++;
@@ -34,14 +26,13 @@ static  void    string(t_stk *stack, char *av)
     split_free(&num);
 }
 
-int is_one(char *av)
+static int is_one(char *av)
 {
     int i;
 
     i = 0;
     while (av[i])
     {
-        // printf("%c", av[i]);
         if (av[i] == ' ' && av[i + 1] != ' ')
             return (1);
         i++;
@@ -49,22 +40,22 @@ int is_one(char *av)
     return (0);
 }
 
-t_stk   *parse(int   ac, char    **av)
+t_stk *parse(int ac, char **av)
 {
-    t_stk   *stack;
-    int i ;
+    t_stk *stack;
+    int i;
 
     stack = init_stack();
     i = 1;
     while (ac >= 2 && av[i])
     {
-        if(is_one(av[i]))
+        if (is_one(av[i]))
             string(stack, av[i]);
         else
-            array(stack, ac, av[i]);
+            array(stack, av[i]);
         i++;
     }
     if (!stack->size)
         terminated("Error\n");
-    return(stack);
+    return (stack);
 }

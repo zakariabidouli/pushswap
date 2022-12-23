@@ -9,8 +9,6 @@
 
 #define FT_INT_MAX 2147483647
 #define FT_INT_MIN -2147483648
-#define FT_ABS(X) (((X) < 0) ? (-(X)) : (X))
-#define MAX(A, B) (((A) > (B)) ? (A) : (B))
 #define REVERSE "\e[7m"
 #define RESET_REVERSE "\e[27m"
 
@@ -76,9 +74,6 @@ void s_b(t_stk *stack);
 void s_s(t_stk *stack_a, t_stk *stack_b);
 void p_b_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
 void p_a_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
-
-// void 	p_a(t_stk *stack_a,t_stk *stack_b);
-// void 	p_b(t_stk *stack_a,t_stk *stack_b);
 void r_a(t_stk *stack);
 void r_b(t_stk *stack);
 void r_r(t_stk *stack_a, t_stk *stack_b);
@@ -91,9 +86,6 @@ void rr_r(t_stk *stack_a, t_stk *stack_b);
 void rr_a_l(t_stk *stack, t_moves_list *list);
 void rr_b_l(t_stk *stack, t_moves_list *list);
 void rr_r_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
-// void         to_keep(t_stack **head, t_stk *inf);
-// void	to_keep(t_stk *stack,
-// 			size_t (*markup_stack)(t_stk *, t_stack *));
 size_t markup_greater(t_stk *stack, t_stack *markup_head);
 size_t markup_index(t_stk *stack, t_stack *markup_head);
 void to_keep(t_stk *stack,
@@ -113,6 +105,10 @@ void free_stack(t_stk *stack);
 void add_command(t_moves_list *list, t_moves *command);
 t_moves *create_command(const char *name);
 void split_free(char ***strsplit);
+
+int MAX(int x, int y);
+int ABS(int x);
+
 // print
 
 void print_stacks(t_stk *a_stack,

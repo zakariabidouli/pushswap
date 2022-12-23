@@ -14,17 +14,19 @@ M_OBJS = $(M_SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(M_OBJS)
-	$(CC) $(CFLAGS) ${LIBFT_BINARY} $^ -o $@
-	@echo "DONE"
+	@$(CC) $(CFLAGS) ${LIBFT_BINARY} $^ -o $@
+	@echo "DONE_PUSH_SWAP"
 
 %.o : %.c push_swap.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(M_OBJS) $(B_OBJS)
+	@rm -rf $(M_OBJS) $(B_OBJS)
+	@echo "DELETE_OBJ_FILES"
 
 fclean: clean
-	rm -rf $(NAME) $(bonus) 
+	@rm -rf $(NAME) $(bonus) 
+	@echo "DELETE_ALL"
 
 re: fclean all
 

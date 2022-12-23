@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_moves		*create_command(const char *name)
+t_moves *create_command(const char *name)
 {
 	t_moves *command;
 
@@ -12,13 +12,13 @@ t_moves		*create_command(const char *name)
 	return (command);
 }
 
-void			add_command(t_moves_list *list,
-					t_moves *command)
+void add_command(t_moves_list *list,
+				 t_moves *command)
 {
 	t_moves *last;
 
 	if (list && command)
-		{
+	{
 		if (!list->head)
 			list->head = command;
 		else

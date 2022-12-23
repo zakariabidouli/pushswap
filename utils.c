@@ -1,8 +1,22 @@
 #include "push_swap.h"
 
-void	split_free(char ***strsplit)
+int ABS(int x)
 {
-	char	**current;
+	if(x < 0)
+		return(-x);
+	return(x);
+}
+
+int MAX(int x, int y)
+{
+	if(x > y)
+		return(x);
+	return(y);
+}
+
+void split_free(char ***strsplit)
+{
+	char **current;
 
 	if (strsplit && *strsplit)
 	{
@@ -116,12 +130,11 @@ char **ft_split(char const *s, char c, int *items_count)
 
 int ft_isspace(int c)
 {
-	return (c == '\t' ||
-			c == '\n' ||
-			c == '\v' ||
-			c == '\f' ||
-			c == '\r' ||
-			c == ' ');
+	if (c == '\t' || c == '\n' ||
+		c == '\v' || c == '\f' ||
+		c == '\r' || c == ' ')
+		return (1);
+	return (0);
 }
 
 t_bool is_int(const char *str, t_bool strict)
@@ -170,72 +183,3 @@ t_bool is_num(char *str)
 		return (true);
 	return (false);
 }
-
-// int		ft_islower(int c)
-// {
-// 	return (c >= 'a' && c <= 'z');
-// }
-
-// int		ft_toupper(int c)
-// {
-// 	return (ft_islower(c) ? (c - 'a' + 'A') : c);
-// }
-
-// int		ft_isdigit_base(char c, int base)
-// {
-// 	const char	*digits = "0123456789ABCDEF";
-// 	int			i;
-
-// 	i = 0;
-// 	while (i < base)
-// 	{
-// 		if (ft_toupper(c) == digits[i])
-// 			return (i);
-// 		i++;
-// 	}
-// 	return (-1);
-// }
-
-// t_bool	ft_isprefix(const char *str, int base)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (base == 2 || base == 8 || base == 16)
-// 	{
-// 		if (str[i++] != '0')
-// 			return (false);
-// 		if (base == 2 && (ft_toupper(str[i]) == 'B'))
-// 			return (true);
-// 		if (base == 16 && (ft_toupper(str[i]) == 'X'))
-// 			return (true);
-// 		if (base == 8)
-// 			return (true);
-// 	}
-// 	return (false);
-// }
-
-// t_bool	is_num(char *str, int base)
-// {
-// 	size_t	i;
-// 	size_t	digits;
-
-// 	i = 0;
-// 	digits = 0;
-// 	while (ft_isspace(str[i]))
-// 		i++;
-// 	if (base != 10 && !ft_isprefix(&str[i], base))
-// 		return (false);
-// 	if (base == 2 || base == 16)
-// 		i += 2;
-// 	else if (base == 8)
-// 		i++;
-// 	else if (base == 10 && (str[i] == '-' || str[i] == '+'))
-// 		i++;
-// 	while (ft_isdigit_base(str[i], base) >= 0)
-// 	{
-// 		i++;
-// 		digits++;
-// 	}
-// 	return ((!str[i] && digits) ? true : false);
-// }

@@ -114,8 +114,6 @@ int main(int ac, char **av)
     t_stk           *stack_greater;
     t_moves_list    *command_list_index;
     t_moves_list    *command_list_greater;
-    // t_stack         *s;
-    // t_stack         *f;
 
     if (ac >= 2)
     {
