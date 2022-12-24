@@ -40,7 +40,7 @@ void	duplicated(t_stk *stack)
 		{
 			if (tmp->num == tmp2->num)
 			{
-				terminated("Error\n");
+				terminated("Error");
 			}
 			else
 				tmp2 = tmp2->next;
@@ -84,11 +84,10 @@ void	sort_position(t_stk *h)
 
 	current = NULL;
 	index = 0;
-	while (current)
+	while ((current = get_min(h)))
 	{
 		current->index = index;
 		index++;
-		current = get_min(h);
 	}
 }
 
@@ -124,32 +123,29 @@ void	free_c(t_moves_list *list)
 
 int	main(int ac, char **av)
 {
-	t_stk			*stack_idx;
+	t_stk			*stack_index;
 	t_stk			*stack_greater;
-	t_moves_list	*command_list_index;
-	t_moves_list	*command_list_greater;
+	t_moves_list	*cmd_list_index;
+	t_moves_list	*cmd_list_greater;
 
 	if (ac >= 2)
 	{
-		duplicated((stack_idx = parse(ac, av)));
-		sort_position(stack_idx);
-		to_keep(stack_idx, &markup_index);
-		command_list_index = solve(stack_idx, &markup_index);
-		free_stack(stack_idx);
+		duplicated((stack_index = parse(ac, av)));
+		sort_position(stack_index);
+		to_keep(stack_index, &sort_index);
+		cmd_list_index = solve(stack_index, &sort_index);
+		free_stack(stack_index);
 		duplicated((stack_greater = parse(ac, av)));
 		sort_position(stack_greater);
-		to_keep(stack_greater, &markup_greater);
-		command_list_greater = solve(stack_greater, &markup_greater);
+		to_keep(stack_greater, &sort_greater);
+		cmd_list_greater = solve(stack_greater, &sort_greater);
 		free_stack(stack_greater);
-		if (command_list_index->size < command_list_greater->size)
-			print_c(command_list_index);
+		if (cmd_list_index->size < cmd_list_greater->size)
+			print_c(cmd_list_index);
 		else
-			print_c(command_list_greater);
-		free_c(command_list_index);
-		free_c(command_list_greater);
-		print_stacks(stack_idx, NULL, 1);
+			print_c(cmd_list_greater);
+		free_c(cmd_list_index);
+		free_c(cmd_list_greater);
 	}
-	else
-		terminated("Error");
 	return (0);
 }

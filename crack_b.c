@@ -19,6 +19,8 @@ void	*ft_memalloc(size_t size)
 	ptr = malloc(size);
 	if (ptr)
 		ft_bzero(ptr, size);
+	else
+		terminated("Error");
 	return (ptr);
 }
 
@@ -28,7 +30,7 @@ t_flag	*init_flag(void)
 
 	flag = (t_flag *)ft_memalloc(sizeof(t_flag));
 	if (!flag)
-		return (0);
+		terminated("Error");
 	flag->flag_a = NULL;
 	flag->flag_b = NULL;
 	flag->a_moves = Rot;
@@ -136,7 +138,6 @@ void	calculate_moves(t_stk *stack_a, t_stk *stack_b, t_flag *info)
 			i++;
 			b = b->next;
 		}
-		// print_stacks(stack_a, stack_b , 1);
 	}
 }
 
@@ -171,7 +172,6 @@ static void	rotate(t_stk *stack_a, t_stk *stack_b,
 				rr_b_l(stack_b, command);
 		}
 	}
-	// print_stacks(stack_a, stack_b, 0);
 }
 
 void	crack_b(t_stk *stack_a, t_stk *stack_b, t_moves_list *command_list)

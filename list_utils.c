@@ -65,20 +65,6 @@ void	append(t_stk	*stack, int num)
 	}
 }
 
-void	deletenode(t_stack *head_ref, t_stack	*del)
-{
-	if (head_ref == NULL || del == NULL)
-		return ;
-	if (head_ref == del)
-		head_ref = del->next;
-	if (del->next != NULL)
-		del->next->prev = del->prev;
-	if (del->prev != NULL)
-		del->prev->next = del->next;
-	free(del);
-	return ;
-}
-
 void	free_stack(t_stk *stack)
 {
 	size_t	i;

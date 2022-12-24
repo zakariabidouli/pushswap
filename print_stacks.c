@@ -80,14 +80,14 @@ void		print_stacks(t_stk *a_stack,
 	while (i < a_stack->size || i < b_stack->size)
 	{
 		if (!(i % 2) && color)
-			ft_putstr_fd(REVERSE, 1);
+			ft_putstr_fd(COL, 1);
 		ft_putchar_fd('|', 1);
 		print_stack(a_stack, &a_current, i);
 		ft_putchar_fd('|', 1);
 		print_stack(b_stack, &b_current, i);
 		ft_putchar_fd('|', 1);
 		if (!(i % 2) && color)
-			ft_putstr_fd(RESET_REVERSE, 1);
+			ft_putstr_fd(RESET_COL, 1);
 		ft_putstr_fd("\n", 1);
 		i++;
 	}

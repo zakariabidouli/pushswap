@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-size_t	markup_index(t_stk *stack, t_stack *markup_head)
+size_t	sort_index(t_stk *stack, t_stack *markup_head)
 {
 	int		index;
 	size_t	pairs;
@@ -40,7 +40,7 @@ size_t	markup_index(t_stk *stack, t_stack *markup_head)
 	return (pairs);
 }
 
-size_t	markup_greater(t_stk *stack, t_stack *markup_head)
+size_t	sort_greater(t_stk *stack, t_stack *markup_head)
 {
 	int		index;
 	size_t	pairs;
@@ -69,7 +69,7 @@ size_t	markup_greater(t_stk *stack, t_stack *markup_head)
 }
 
 void	to_keep(t_stk *stack,
-				size_t (*markup)(t_stk *, t_stack *))
+				size_t (*sort)(t_stk *, t_stack *))
 {
 	size_t	i;
 	size_t	current_pairs;
@@ -81,7 +81,7 @@ void	to_keep(t_stk *stack,
 		current = stack->head;
 		while (i < stack->size)
 		{
-			current_pairs = markup(stack, current);
+			current_pairs = sort(stack, current);
 			if (current_pairs > stack->pairs)
 			{
 				stack->markup_head = current;
@@ -95,5 +95,5 @@ void	to_keep(t_stk *stack,
 			current = current->next;
 		}
 	}
-	markup(stack, stack->markup_head);
+	sort(stack, stack->markup_head);
 }

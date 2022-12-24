@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A1186440_584A_4466_8E71_FFCF9846A296
-#define A1186440_584A_4466_8E71_FFCF9846A296
-
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -26,7 +23,6 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
-int			ft_atoi(const char *str);
 void		*ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strcat(char *dest, char *src);
@@ -60,7 +56,6 @@ int			ft_isdigit(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
-// char		**ft_split(char const *s, char c);
 char		*ft_itoa(int n);
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_back(t_list **lst, t_list *new);
@@ -73,6 +68,3 @@ void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif
-
-
-#endif /* A1186440_584A_4466_8E71_FFCF9846A296 */

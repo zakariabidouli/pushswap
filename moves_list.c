@@ -18,10 +18,10 @@ t_moves	*create_command(const char *name)
 
 	command = (t_moves *)malloc(sizeof(t_moves));
 	if (!command)
-		terminated("malloc error");
+		terminated("Error");
 	command->name = ft_strdup(name);
 	if (!command->name)
-		terminated("malloc error");
+		terminated("Error");
 	command->next = NULL;
 	return (command);
 }

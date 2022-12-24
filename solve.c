@@ -18,7 +18,7 @@ t_stk	*init_stack(void)
 
 	stack = (t_stk *)malloc(sizeof(t_stk));
 	if (!stack)
-		terminated("error creating stack\n");
+		terminated("Error");
 	stack->head = NULL;
 	stack->size = 0;
 	stack->pairs = 0;
@@ -32,7 +32,7 @@ t_moves_list	*init_moves(void)
 
 	command_list = (t_moves_list *)malloc(sizeof(t_moves_list));
 	if (!command_list)
-		terminated("error creating command\n");
+		terminated("Error");
 	command_list->head = NULL;
 	command_list->size = 0;
 	return (command_list);
@@ -73,16 +73,17 @@ void	sort_a(t_stk *stack_a, t_moves_list *list)
 	}
 }
 
-t_moves_list	*solve(t_stk *stack_a, size_t(markup)(t_stk *, t_stack *))
+t_moves_list	*solve(t_stk *stack_a, size_t(sort)(t_stk *, t_stack *))
 {
 	t_moves_list	*command_list;
 	t_stk			*stack_b;
 
 	command_list = init_moves();
 	stack_b = init_stack();
-	crack_a(stack_a, stack_b, markup, command_list);
+	crack_a(stack_a, stack_b, sort, command_list);
 	crack_b(stack_a, stack_b, command_list);
 	sort_a(stack_a, command_list);
+	// print_stacks(stack_a, stack_b, 1);
 	free_stack(stack_b);
 	return (command_list);
 }

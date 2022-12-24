@@ -12,14 +12,15 @@
 
 CC = gcc
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 
 LIBFT_BINARY = libft.a
 
 M_SRCS 	= push_swap.c crack_a.c crack_b.c list_utils.c moves_down.c moves_list.c\
-		moves_push.c moves_swap.c moves_up.c parse.c solve.c sort.c utils.c print_stacks.c
+		moves_push.c moves_swap.c moves_up.c parse.c solve.c sort.c utils.c print_stacks.c\
+		atoi.c
 
 M_OBJS = $(M_SRCS:.c=.o)
 
