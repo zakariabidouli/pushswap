@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   crack_a.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/24 00:46:27 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/12/24 00:51:16 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static t_bool needs_pb(t_stk *stack_a)
+static t_bool	needs_pb(t_stk *stack_a)
 {
-	size_t i;
-	t_stack *current;
+	size_t	i;
+	t_stack	*current;
 
 	if (stack_a)
 	{
@@ -20,10 +32,10 @@ static t_bool needs_pb(t_stk *stack_a)
 	return (false);
 }
 
-static t_bool needs_sa(t_stk *stack_a,
-					   size_t (*markup)(t_stk *, t_stack *))
+static t_bool	needs_sa(t_stk *stack_a,
+						size_t (*markup)(t_stk *, t_stack *))
 {
-	size_t current_pairs;
+	size_t	current_pairs;
 
 	if (stack_a && stack_a->size >= 2)
 	{
@@ -37,7 +49,8 @@ static t_bool needs_sa(t_stk *stack_a,
 	return (false);
 }
 
-void crack_a(t_stk *stack_a, t_stk *stack_b, size_t markup(t_stk *, t_stack *), t_moves_list *command_list)
+void	crack_a(t_stk *stack_a, t_stk *stack_b,
+				size_t markup(t_stk *, t_stack *), t_moves_list *command_list)
 {
 	while (needs_pb(stack_a))
 	{

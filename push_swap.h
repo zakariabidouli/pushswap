@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/24 00:47:27 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/12/24 01:43:57 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
-
+#ifndef	PUSH_SWAP_H
+#define	PUSH_SWAP_H
 #include "libft.h"
 #include <stdio.h>
 #include <unistd.h>
@@ -63,51 +73,50 @@ typedef struct s_flag
 	t_bool is_done;
 } t_flag;
 
-char **ft_split(char const *s, char c, int *items_count);
-void append(t_stk *stack, int num);
-void push_front(t_stack *head_ref, int num, int index);
-void deleteNode(t_stack *head_ref, t_stack *del);
-void new_positions(t_stack **head_ref);
-void s_a(t_stk *stack);
-void s_x_l(t_stk *stack, t_moves_list *list);
-void s_b(t_stk *stack);
-void s_s(t_stk *stack_a, t_stk *stack_b);
-void p_b_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
-void p_a_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
-void r_a(t_stk *stack);
-void r_b(t_stk *stack);
-void r_r(t_stk *stack_a, t_stk *stack_b);
-void r_a_l(t_stk *stack, t_moves_list *list);
-void r_b_l(t_stk *stack, t_moves_list *list);
-void rr_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
-void rr_a(t_stk *stack);
-void rr_b(t_stk *stack);
-void rr_r(t_stk *stack_a, t_stk *stack_b);
-void rr_a_l(t_stk *stack, t_moves_list *list);
-void rr_b_l(t_stk *stack, t_moves_list *list);
-void rr_r_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
-size_t markup_greater(t_stk *stack, t_stack *markup_head);
-size_t markup_index(t_stk *stack, t_stack *markup_head);
-void to_keep(t_stk *stack,
-			 size_t (*markup)(t_stk *, t_stack *));
-int stacksize(t_stack **head_a);
-t_bool is_int(const char *number, t_bool strict);
-t_bool is_num(char *str);
-void terminated(char const *s);
-t_moves_list *init_moves(void);
-t_stk *init_stack(void);
-t_stk *parse(int ac, char **av);
-void duplicated(t_stk *stack);
-void crack_b(t_stk *stack_a, t_stk *stack_b, t_moves_list *command_list);
-void crack_a(t_stk *stack_a, t_stk *stack_b, size_t(markup)(t_stk *stack, t_stack *markup_head), t_moves_list *command_list);
-t_moves_list *solve(t_stk *stack_a, size_t(markup)(t_stk *stack, t_stack *markup_head));
-void free_stack(t_stk *stack);
-void add_command(t_moves_list *list, t_moves *command);
-t_moves *create_command(const char *name);
-void split_free(char ***strsplit);
+char	**ft_split(char const *s, char c, int *items_count);
+void	append(t_stk *stack, int num);
+void	push_front(t_stack *head_ref, int num, int index);
+void	deletenode(t_stack *head_ref, t_stack *del);
+void	new_positions(t_stack **head_ref);
+void	s_a(t_stk *stack);
+void	s_x_l(t_stk *stack, t_moves_list *list);
+void	s_b(t_stk *stack);
+void	s_s(t_stk *stack_a, t_stk *stack_b);
+void	p_b_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
+void	p_a_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
+void	r_a(t_stk *stack);
+void	r_b(t_stk *stack);
+void	r_r(t_stk *stack_a, t_stk *stack_b);
+void	r_a_l(t_stk *stack, t_moves_list *list);
+void	r_b_l(t_stk *stack, t_moves_list *list);
+void	rr_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
+void	rr_a(t_stk *stack);
+void	rr_b(t_stk *stack);
+void	rr_r(t_stk *stack_a, t_stk *stack_b);
+void	rr_a_l(t_stk *stack, t_moves_list *list);
+void	rr_b_l(t_stk *stack, t_moves_list *list);
+void	rr_r_l(t_stk *stack_a, t_stk *stack_b, t_moves_list *list);
+size_t	markup_greater(t_stk *stack, t_stack *markup_head);
+size_t	markup_index(t_stk *stack, t_stack *markup_head);
+void	to_keep(t_stk *stack, size_t (*markup)(t_stk *, t_stack *));
+int		stacksize(t_stack **head_a);
+t_bool	is_int(const char *number, t_bool strict);
+t_bool	is_num(char *str);
+void	terminated(char const *s);
+t_moves_list	*init_moves(void);
+t_stk	*init_stack(void);
+t_stk	*parse(int ac, char **av);
+void	duplicated(t_stk *stack);
+void	crack_b(t_stk *stack_a, t_stk *stack_b, t_moves_list *command_list);
+void	crack_a(t_stk *stack_a, t_stk *stack_b, size_t(markup)(t_stk *stack, t_stack *markup_head), t_moves_list *command_list);
+t_moves_list	*solve(t_stk *stack_a, size_t(markup)(t_stk *stack, t_stack *markup_head));
+void	free_stack(t_stk *stack);
+void	add_command(t_moves_list *list, t_moves *command);
+t_moves	*create_command(const char *name);
+void	split_free(char ***strsplit);
+int		max(int x, int y);
+int		my_abs(int x);
 
-int MAX(int x, int y);
-int ABS(int x);
 
 // print
 

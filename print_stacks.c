@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_stacks.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/24 00:47:18 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/12/24 01:43:39 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 size_t	ft_unsignedlen(uintmax_t number, unsigned int base)
@@ -19,7 +31,7 @@ size_t	ft_signedlen(intmax_t number, unsigned int base)
 {
 	size_t	size;
 
-	size = ft_unsignedlen((uintmax_t)ABS(number), base);
+	size = ft_unsignedlen((uintmax_t)my_abs(number), base);
 	return (size + ((number < 0 && size) ? 1 : 0));
 }
 static void	print_int(int number,

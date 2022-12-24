@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/24 00:47:43 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/12/24 01:44:56 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int ABS(int x)
+int	my_abs(int x)
 {
-	if(x < 0)
-		return(-x);
-	return(x);
+	if (x < 0)
+		return (-x);
+	return (x);
 }
 
-int MAX(int x, int y)
+int	max(int x, int y)
 {
-	if(x > y)
-		return(x);
-	return(y);
+	if (x > y)
+		return (x);
+	return (y);
 }
 
-void split_free(char ***strsplit)
+void	split_free(char ***strsplit)
 {
-	char **current;
+	char	**current;
 
 	if (strsplit && *strsplit)
 	{
@@ -28,9 +40,9 @@ void split_free(char ***strsplit)
 	}
 }
 
-int str_len(char *s)
+int	str_len(char *s)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (s[len] != '\0')
@@ -38,9 +50,9 @@ int str_len(char *s)
 	return (len);
 }
 
-static size_t count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	size_t words;
+	size_t	words;
 
 	words = 0;
 	while (*s)
@@ -57,9 +69,9 @@ static size_t count_words(char const *s, char c)
 	return (words);
 }
 
-static char *get_word(char *word, char c)
+static char	*get_word(char *word, char c)
 {
-	char *start;
+	char	*start;
 
 	start = word;
 	while (*word && *word != c)
@@ -68,7 +80,7 @@ static char *get_word(char *word, char c)
 	return (ft_strdup(start));
 }
 
-static void *free_words(char **words, size_t i)
+static void	*free_words(char **words, size_t i)
 {
 	while (i--)
 	{
@@ -82,11 +94,11 @@ static void *free_words(char **words, size_t i)
 	return (NULL);
 }
 
-static char **get_words(char *s, char c, size_t words_count)
+static char	**get_words(char *s, char c, size_t words_count)
 {
-	char **words;
-	char *word;
-	size_t i;
+	char	**words;
+	char	*word;
+	size_t	i;
 
 	words = (char **)malloc(sizeof(char *) * (words_count + 1));
 	if (words)
@@ -97,7 +109,7 @@ static char **get_words(char *s, char c, size_t words_count)
 			while (*s == c)
 				s++;
 			if (*s == 0)
-				break;
+				break ;
 			word = get_word(s, c);
 			if (!word)
 				return (free_words(words, i));
@@ -109,11 +121,11 @@ static char **get_words(char *s, char c, size_t words_count)
 	return (words);
 }
 
-char **ft_split(char const *s, char c, int *items_count)
+char	**ft_split(char const *s, char c, int *items_count)
 {
-	char **words;
-	char *line;
-	int wc;
+	char	**words;
+	char	*line;
+	int		wc;
 
 	if (!s)
 		return (NULL);
@@ -128,22 +140,22 @@ char **ft_split(char const *s, char c, int *items_count)
 	return (words);
 }
 
-int ft_isspace(int c)
+int	ft_isspace(int c)
 {
-	if (c == '\t' || c == '\n' ||
-		c == '\v' || c == '\f' ||
-		c == '\r' || c == ' ')
+	if (c == '\t' || c == '\n'
+		|| c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
 		return (1);
 	return (0);
 }
 
-t_bool is_int(const char *str, t_bool strict)
+t_bool	is_int(const char *str, t_bool strict)
 {
-	unsigned int result;
-	unsigned int border;
-	int i;
-	int sign;
-	int digits;
+	unsigned int	result;
+	unsigned int	border;
+	int				i;
+	int				sign;
+	int				digits;
 
 	result = 0;
 	digits = 0;
@@ -156,17 +168,20 @@ t_bool is_int(const char *str, t_bool strict)
 		i++;
 	while (ft_isdigit(str[i]) && ++digits)
 	{
-		if (((result > border || (result == border && (str[i] - '0') > 7)) && sign == 1) || ((result > border || (result == border && (str[i] - '0') > 8)) && sign == -1))
+		if (((result > border || (result == border && (str[i] - '0') > 7))
+				&& sign == 1)
+			|| ((result > border || (result == border && (str[i] - '0') > 8))
+				&& sign == -1))
 			return (false);
 		result = result * 10 + (str[i++] - '0');
 	}
 	return (!str[i] && digits);
 }
 
-t_bool is_num(char *str)
+t_bool	is_num(char *str)
 {
-	size_t i;
-	size_t digits;
+	size_t	i;
+	size_t	digits;
 
 	i = 0;
 	digits = 0;
