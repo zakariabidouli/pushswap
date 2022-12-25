@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:46:57 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:18:25 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:20:43 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 t_moves	*create_command(const char *name)
 {

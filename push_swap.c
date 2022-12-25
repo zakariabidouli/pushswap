@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:47:22 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:50:46 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:21:00 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	ft_put_fd(char const *s, int fd)
 {
@@ -84,8 +84,11 @@ void	sort_position(t_stk *h)
 
 	current = NULL;
 	index = 0;
-	while ((current = get_min(h)))
+	while (1)
 	{
+		current = get_min(h);
+		if (!current)
+			break ;
 		current->index = index;
 		index++;
 	}

@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:46:39 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:15:00 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:20:29 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	push_front(t_stack *head_ref, int num, int index)
 {

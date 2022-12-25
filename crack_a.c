@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:46:27 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 00:51:16 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:20:22 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 static t_bool	search_pb(t_stk *stack_a)
 {

@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:47:01 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:20:05 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:20:46 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	push(t_stk *stack, t_stack *elem)
 {

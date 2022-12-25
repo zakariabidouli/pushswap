@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:47:37 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:33:00 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:21:16 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 size_t	sort_index(t_stk *stack, t_stack *markup_head)
 {

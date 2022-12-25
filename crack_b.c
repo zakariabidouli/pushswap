@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:46:34 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:42:59 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:20:25 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 void	*ft_memalloc(size_t size)
 {

@@ -1,4 +1,16 @@
-#include"push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atoi.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/25 01:00:24 by zbidouli          #+#    #+#             */
+/*   Updated: 2022/12/25 01:20:17 by zbidouli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include"pushswap.h"
 
 static unsigned int	math(const char *s, int i)
 {
@@ -35,7 +47,7 @@ long	ft_atoi(const char	*str)
 	x = math(s, i);
 	if (j % 2)
 		x = -x;
-	if(x > 2147483647 || x < -2147483648)
+	if (x > FT_INT_MAX || x < FT_INT_MIN)
 		terminated ("Error");
 	return (x);
 }

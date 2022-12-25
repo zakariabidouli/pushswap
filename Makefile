@@ -6,7 +6,7 @@
 #    By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/24 00:46:43 by zbidouli          #+#    #+#              #
-#    Updated: 2022/12/24 00:46:44 by zbidouli         ###   ########.fr        #
+#    Updated: 2022/12/25 01:23:35 by zbidouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = push_swap
+NAME = pushswap
 
 LIBFT_BINARY = libft.a
 
@@ -30,7 +30,7 @@ $(NAME) : $(M_OBJS)
 	@$(CC) $(CFLAGS) ${LIBFT_BINARY} $^ -o $@
 	@echo "DONE_PUSH_SWAP"
 
-%.o : %.c push_swap.h
+%.o : %.c pushswap.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

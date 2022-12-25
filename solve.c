@@ -6,11 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:47:33 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/24 01:30:30 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 01:21:12 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 t_stk	*init_stack(void)
 {
@@ -83,7 +83,6 @@ t_moves_list	*solve(t_stk *stack_a, size_t(sort)(t_stk *, t_stack *))
 	crack_a(stack_a, stack_b, sort, command_list);
 	crack_b(stack_a, stack_b, command_list);
 	sort_a(stack_a, command_list);
-	// print_stacks(stack_a, stack_b, 1);
 	free_stack(stack_b);
 	return (command_list);
 }
