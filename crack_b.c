@@ -6,12 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:46:34 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/25 01:20:25 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 03:43:43 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
 
 static void	rotate(t_stk *stack_a, t_stk *stack_b,
 					t_flag *info, t_moves_list *command)

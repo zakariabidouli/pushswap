@@ -6,34 +6,34 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:47:27 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/25 01:26:00 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 03:49:44 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 
-#include "libft.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+# include "libft.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-#define FT_INT_MAX 2147483647
-#define FT_INT_MIN -2147483648
-#define COL "\033[0;31m"
-#define RESET_COL "\033[0m"
+# define FT_INT_MAX 2147483647
+# define FT_INT_MIN -2147483648
+# define COL "\033[0;31m"
+# define RESET_COL "\033[0m"
 
-typedef enum
+typedef enum s_bool
 {
 	false,
 	true,
-} t_bool;
+}	t_bool;
 
-typedef enum
+typedef enum s_direction
 {
 	Rot,
 	RevRot,
-} t_direction;
+}	t_direction;
 
 typedef struct s_stack
 {
@@ -42,7 +42,7 @@ typedef struct s_stack
 	t_bool			keep;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-} t_stack;
+}	t_stack;
 
 typedef struct s_stk
 {
@@ -50,19 +50,19 @@ typedef struct s_stk
 	t_stack	*markup_head;
 	size_t	size;
 	size_t	pairs;
-} t_stk;
+}	t_stk;
 
 typedef struct s_moves
 {
 	char			*name;
 	struct s_moves	*next;
-} t_moves;
+}	t_moves;
 
 typedef struct s_moves_list
 {
 	t_moves	*head;
 	size_t	size;
-} t_moves_list;
+}	t_moves_list;
 
 typedef struct s_flag
 {
@@ -72,7 +72,7 @@ typedef struct s_flag
 	t_direction	b_moves;
 	size_t		size;
 	t_bool		is_done;
-} t_flag;
+}	t_flag;
 
 char			**ft_split(char const *s, char c, int *items_count);
 void			append(t_stk *stack, int num);
@@ -105,20 +105,21 @@ t_bool			is_num(char	*str);
 void			terminated(char const	*s);
 t_moves_list	*init_moves(void);
 t_stk			*init_stack(void);
-t_stk			*parse(int	ac, char	**av);
+t_stk			*parse(int ac, char	**av);
 void			duplicated(t_stk	*stack);
 void			crack_b(t_stk	*stack_a, t_stk	*stack_b,
-						t_moves_list	*command_list);
+					t_moves_list	*command_list);
 void			crack_a(t_stk	*stack_a, t_stk	*stack_b,
-						size_t	(markup)(t_stk *stack, t_stack *markup_head),
-						t_moves_list *command_list);
-t_moves_list	*solve(t_stk *stack_a, size_t(markup)(t_stk *stack, t_stack *markup_head));
+					size_t	(markup)(t_stk *stack, t_stack *markup_head),
+					t_moves_list *command_list);
+t_moves_list	*solve(t_stk *stack_a, size_t(markup)(t_stk *stack,
+						t_stack *markup_head));
 void			free_stack(t_stk *stack);
 void			add_command(t_moves_list *list, t_moves *command);
 t_moves			*create_command(const char	*name);
 void			split_free(char	***strsplit);
-int				max(int	x, int	y);
-int				my_abs(int	x);
+int				max(int x, int y);
+int				my_abs(int x);
 void			print_stacks(t_stk	*a_stack, t_stk	*b_stack, t_bool	color);
 long			ft_atoi(const char	*str);
 void			cal(t_stk *stack_a, t_stk *stack_b, t_stack *b, t_flag	*info);
@@ -128,4 +129,5 @@ void			free_c(t_moves_list *list);
 void			print_c(t_moves_list *list);
 int				str_len(char *s);
 int				ft_isspace(int c);
+
 #endif

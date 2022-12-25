@@ -6,12 +6,11 @@
 /*   By: zbidouli <zbidouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 00:47:22 by zbidouli          #+#    #+#             */
-/*   Updated: 2022/12/25 01:21:00 by zbidouli         ###   ########.fr       */
+/*   Updated: 2022/12/25 03:44:20 by zbidouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
 
 void	duplicated(t_stk *stack)
 {
@@ -81,7 +80,6 @@ void	sort_position(t_stk *h)
 		index++;
 	}
 }
-
 
 int	main(int ac, char **av)
 {
