@@ -16,6 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 
+LIBFT= ./libft/
 LIBFT_BINARY = libft.a
 
 M_SRCS 	= push_swap.c crack_a.c crack_b.c list_utils.c moves_down.c moves_list.c\
@@ -27,6 +28,7 @@ M_OBJS = $(M_SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(M_OBJS)
+	@cd $(LIBFT) && make && cp ${LIBFT_BINARY} ../ 
 	@$(CC) $(CFLAGS) ${LIBFT_BINARY} $^ -o $@
 	@echo "DONE_PUSH_SWAP"
 
@@ -35,10 +37,13 @@ $(NAME) : $(M_OBJS)
 
 clean:
 	@rm -rf $(M_OBJS) $(B_OBJS)
+	@rm -rf $(LIBFT_BINARY)
+	@cd $(LIBFT) && make clean
 	@echo "DELETE_OBJ_FILES"
 
 fclean: clean
-	@rm -rf $(NAME) $(bonus) 
+	@rm -rf $(NAME)	
+	@cd $(LIBFT) && make fclean
 	@echo "DELETE_ALL"
 
 re: fclean all
