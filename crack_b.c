@@ -12,6 +12,31 @@
 
 #include "pushswap.h"
 
+static void	rotate_x(t_stk *stack_a, t_stk *stack_b,
+					t_flag *info, t_moves_list *command, char x)
+{
+	if(x == 'a')
+	{
+		if (info->a_moves == Rot)
+			r_a_l(stack_a, command);
+		else
+			rr_a_l(stack_a, command);
+	}
+	else if(x == 'b')
+	{
+		if (info->b_moves == Rot)
+			r_b_l(stack_b, command);
+		else
+			rr_b_l(stack_b, command);
+	}
+	else if(x == 'r')
+	{
+		if (info->a_moves == Rot)
+			rr_l(stack_a, stack_b, command);
+		else
+			rr_r_l(stack_a, stack_b, command);
+	}
+}
 static void	rotate(t_stk *stack_a, t_stk *stack_b,
 					t_flag *info, t_moves_list *command)
 {
@@ -20,28 +45,11 @@ static void	rotate(t_stk *stack_a, t_stk *stack_b,
 		if (info->a_moves == info->b_moves
 			&& info->flag_a != stack_a->head
 			&& info->flag_b != stack_b->head)
-		{
-			if (info->a_moves == Rot)
-				rr_l(stack_a, stack_b, command);
-			else
-				rr_r_l(stack_a, stack_b, command);
-		}
+			rotate_x(stack_a, stack_b, info, command, 'r');
 		else if (info->flag_a != stack_a->head)
-		{
-			if (info->a_moves == Rot)
-			{
-				r_a_l(stack_a, command);
-			}
-			else
-				rr_a_l(stack_a, command);
-		}
+			rotate_x(stack_a, stack_b, info, command, 'a');
 		else if (info->flag_b != stack_b->head)
-		{
-			if (info->b_moves == Rot)
-				r_b_l(stack_b, command);
-			else
-				rr_b_l(stack_b, command);
-		}
+			rotate_x(stack_a, stack_b, info, command, 'b');
 	}
 }
 
