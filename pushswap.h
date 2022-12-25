@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
-#define 	PUSHSWAP_H
+# define PUSHSWAP_H
 
 #include "libft.h"
 #include <stdio.h>
@@ -121,5 +121,11 @@ int				max(int	x, int	y);
 int				my_abs(int	x);
 void			print_stacks(t_stk	*a_stack, t_stk	*b_stack, t_bool	color);
 long			ft_atoi(const char	*str);
-
+void			cal(t_stk *stack_a, t_stk *stack_b, t_stack *b, t_flag	*info);
+t_flag			*init_flag(void);
+void			*ft_memalloc(size_t size);
+void			free_c(t_moves_list *list);
+void			print_c(t_moves_list *list);
+int				str_len(char *s);
+int				ft_isspace(int c);
 #endif
