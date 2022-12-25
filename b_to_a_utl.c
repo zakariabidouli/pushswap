@@ -22,9 +22,10 @@ t_flag	*init_flag(void)
 	flag->flag_a = NULL;
 	flag->flag_b = NULL;
 	flag->a_moves = Rot;
-	flag->a_moves = Rot;
+	flag->b_moves = Rot;
 	flag->size = 0;
 	flag->is_done = false;
+	flag->x = 0;
 	return (flag);
 }
 

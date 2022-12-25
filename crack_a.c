@@ -37,7 +37,7 @@ static t_bool	search_sa(t_stk *stack_a,
 {
 	size_t	current_pairs;
 
-	if (stack_a && stack_a->size >= 2)
+	if (stack_a && stack_a->size > 1)
 	{
 		s_a(stack_a);
 		current_pairs = sort(stack_a, stack_a->markup_head);

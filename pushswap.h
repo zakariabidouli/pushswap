@@ -72,12 +72,11 @@ typedef struct s_flag
 	t_direction	b_moves;
 	size_t		size;
 	t_bool		is_done;
-}	t_flag;
+	char		x;
+}	t_flag;	
 
 char			**ft_split(char const *s, char c, int *items_count);
 void			append(t_stk *stack, int num);
-void			push_front(t_stack *head_ref, int num, int index);
-void			new_positions(t_stack **head_ref);
 void			s_a(t_stk *stack);
 void			s_x_l(t_stk *stack, t_moves_list *list);
 void			s_b(t_stk *stack);
@@ -100,13 +99,11 @@ size_t			sort_greater(t_stk *stack, t_stack *markup_head);
 size_t			sort_index(t_stk *stack, t_stack *markup_head);
 void			to_keep(t_stk	*stack, size_t (*markup)(t_stk *, t_stack *));
 int				stacksize(t_stack	**head_a);
-t_bool			is_int(const char	*number, t_bool	strict);
 t_bool			is_num(char	*str);
 void			terminated(char const	*s);
 t_moves_list	*init_moves(void);
 t_stk			*init_stack(void);
 t_stk			*parse(int ac, char	**av);
-void			duplicated(t_stk	*stack);
 void			crack_b(t_stk	*stack_a, t_stk	*stack_b,
 					t_moves_list	*command_list);
 void			crack_a(t_stk	*stack_a, t_stk	*stack_b,
@@ -120,7 +117,7 @@ t_moves			*create_command(const char	*name);
 void			split_free(char	***strsplit);
 int				max(int x, int y);
 int				my_abs(int x);
-void			print_stacks(t_stk	*a_stack, t_stk	*b_stack, t_bool	color);
+// void			print_stacks(t_stk	*a_stack, t_stk	*b_stack, t_bool	color);
 long			ft_atoi(const char	*str);
 void			cal(t_stk *stack_a, t_stk *stack_b, t_stack *b, t_flag	*info);
 t_flag			*init_flag(void);

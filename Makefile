@@ -43,7 +43,6 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)	
-	@cd $(LIBFT) && make fclean
 	@echo "DELETE_ALL"
 
 re: fclean all
